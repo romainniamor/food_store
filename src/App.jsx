@@ -1,13 +1,15 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import LoginPage from "./components/pages/login/LoginPage";
 
 function App() {
-  const [count, setCount] = useState(0);
+  //state
 
+  //comportements
+
+  //render
   return (
     <>
-      <h1>hello world 3</h1>
+      <LoginPage />
     </>
   );
 }
