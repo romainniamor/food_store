@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LoginPage from "./components/pages/login/LoginPage";
 import { Routes, Route } from "react-router-dom";
-import ErrorPage from "./components/pages/error/ErrorPage";
+import ErrorPage from "./components/pages/error/errorPage";
 import OrderPage from "./components/pages/order/orderPage";
 
 function App() {
