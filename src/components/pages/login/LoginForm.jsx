@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { theme } from "../../../theme/index";
+import styled from "styled-components";
+import { BsPersonCircle } from "react-icons/bs";
+import { FaChevronCircleRight } from "react-icons/fa";
 
 export default function LoginForm() {
   //state
@@ -18,20 +22,118 @@ export default function LoginForm() {
 
   //render
   return (
-    <>
-      <h1>Bienvenue chez nous! </h1>
-      <br />
+    <LoginFormStyled>
+      <h1>Bienvenue chez nous ! </h1>
+
+      <hr />
       <h2>Connectez-vous</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          required
-          placeholder="Entrez votre prénom..."
-          value={userName}
-          onChange={handleChange}
-        />
-        <button type="submit">Accèdez à votre espace</button>
+        <div className="inputBox">
+          <BsPersonCircle className="loginIcon" />
+          <input
+            type="text"
+            required
+            placeholder="Entrez votre prénom"
+            value={userName}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">
+          <span>Accèdez à mon espace</span>
+          <FaChevronCircleRight />
+        </button>
       </form>
-    </>
+    </LoginFormStyled>
   );
 }
+
+const LoginFormStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Amatic SC", cursive;
+  gap: ${theme.spacing.md};
+  color: ${theme.colors.white};
+  max-width: 464px;
+  min-width: 400px;
+  padding: 2.5rem 2rem;
+
+  h1 {
+    font-size: ${theme.fonts.P6};
+  }
+
+  hr {
+    width: 100%;
+    height: 3px;
+    background: ${theme.colors.primary};
+    border: none;
+  }
+
+  h2 {
+    font-size: ${theme.fonts.P4};
+    font-weight: 700;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: ${theme.spacing.md};
+    width: 100%;
+
+    .inputBox {
+      width: 100%;
+      background: ${theme.colors.white};
+      border-radius: ${theme.borderRadius.round};
+      display: flex;
+      align-items: center;
+      padding: 18px 24px;
+      gap: ${theme.spacing.xs};
+      color: ${theme.colors.greyLight};
+      font-size: ${theme.fonts.P0};
+      .loginIcon {
+        color: ${theme.colors.greyMedium};
+      }
+      input {
+        border: none;
+        padding: 1px;
+        flex: 1;
+        color: ${theme.colors.dark};
+        &::placeholder {
+          color: ${theme.colors.greyMedium};
+        }
+        &:focus {
+          outline: 1px solid ${theme.colors.greySemiDark};
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: ${theme.spacing.xs};
+      background: ${theme.colors.primary};
+      border-radius: ${theme.borderRadius.round};
+      border: none;
+      font-size: ${theme.fonts.P0};
+      font-weight: 800;
+      color: ${theme.colors.white};
+      padding: 18px 24px;
+      cursor: pointer;
+      &:hover:not(:disabled) {
+        background: ${theme.colors.white};
+        color: ${theme.colors.primary};
+        transition: all 0.3s ease-out;
+      }
+      &:active {
+        background: ${theme.colors.white};
+        color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.primary};
+      }
+    }
+  }
+`;
