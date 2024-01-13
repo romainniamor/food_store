@@ -36,6 +36,6 @@ const OrderPageStyled = styled.div`
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
