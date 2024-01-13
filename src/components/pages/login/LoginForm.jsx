@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../../../theme/index";
 import styled from "styled-components";
-import { BsPersonCircle } from "react-icons/bs";
+import Input from "../../reusableUi/Input";
 import { FaChevronCircleRight } from "react-icons/fa";
+import { BsPersonCircle } from "react-icons/bs";
 
 export default function LoginForm() {
   //state
@@ -24,20 +25,16 @@ export default function LoginForm() {
   return (
     <LoginFormStyled>
       <h1>Bienvenue chez nous ! </h1>
-
       <hr />
       <h2>Connectez-vous</h2>
       <form onSubmit={handleSubmit}>
-        <div className="inputBox">
-          <BsPersonCircle className="loginIcon" />
-          <input
-            type="text"
-            required
-            placeholder="Entrez votre prénom"
-            value={userName}
-            onChange={handleChange}
-          />
-        </div>
+        <Input
+          Icon={<BsPersonCircle className="loginIcon" />}
+          value={userName}
+          onChange={handleChange}
+          placeholder={"Entrez votre prénom"}
+          required
+        />
         <button type="submit">
           <span>Accèdez à mon espace</span>
           <FaChevronCircleRight />
@@ -82,31 +79,9 @@ const LoginFormStyled = styled.div`
     gap: ${theme.spacing.md};
     width: 100%;
 
-    .inputBox {
-      width: 100%;
-      background: ${theme.colors.white};
-      border-radius: ${theme.borderRadius.round};
-      display: flex;
-      align-items: center;
-      padding: 18px 24px;
-      gap: ${theme.spacing.xs};
-      color: ${theme.colors.greyLight};
+    .loginIcon {
+      color: ${theme.colors.greyMedium};
       font-size: ${theme.fonts.P0};
-      .loginIcon {
-        color: ${theme.colors.greyMedium};
-      }
-      input {
-        border: none;
-        padding: 1px;
-        flex: 1;
-        color: ${theme.colors.dark};
-        &::placeholder {
-          color: ${theme.colors.greyMedium};
-        }
-        &:focus {
-          outline: 1px solid ${theme.colors.greySemiDark};
-        }
-      }
     }
 
     button {
