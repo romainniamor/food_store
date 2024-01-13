@@ -5,6 +5,7 @@ import styled from "styled-components";
 import TextInput from "../../reusableUi/TextInput";
 import { FaChevronCircleRight } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
+import PrimaryButton from "../../reusableUi/PrimaryButton";
 
 export default function LoginForm() {
   //state
@@ -35,10 +36,10 @@ export default function LoginForm() {
           placeholder={"Entrez votre prénom"}
           required
         />
-        <button type="submit">
-          <span>Accèdez à mon espace</span>
-          <FaChevronCircleRight />
-        </button>
+        <PrimaryButton
+          Icon={<FaChevronCircleRight />}
+          content={"Accèdez à mon espace"}
+        />
       </form>
     </LoginFormStyled>
   );
@@ -82,33 +83,6 @@ const LoginFormStyled = styled.div`
     .loginIcon {
       color: ${theme.colors.greyMedium};
       font-size: ${theme.fonts.P0};
-    }
-
-    button {
-      width: 100%;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: ${theme.spacing.xs};
-      background: ${theme.colors.primary};
-      border-radius: ${theme.borderRadius.round};
-      border: none;
-      font-size: ${theme.fonts.P0};
-      font-weight: 800;
-      color: ${theme.colors.white};
-      padding: 18px 24px;
-      cursor: pointer;
-      &:hover:not(:disabled) {
-        background: ${theme.colors.white};
-        color: ${theme.colors.primary};
-        transition: all 0.3s ease-out;
-      }
-      &:active {
-        background: ${theme.colors.white};
-        color: ${theme.colors.primary};
-        border: 1px solid ${theme.colors.primary};
-      }
     }
   }
 `;
