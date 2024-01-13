@@ -70,7 +70,8 @@ const LoginFormStyled = styled.div`
 
   h2 {
     font-size: ${theme.fonts.P4};
-    font-weight: 700;
+    font-weight: ${theme.weights.bold};
+    margin: 20px 0px 0;
   }
 
   form {

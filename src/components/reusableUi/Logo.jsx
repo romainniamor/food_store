@@ -27,7 +27,7 @@ const LogoStyled = styled.div`
     color: ${theme.colors.primary};
     font-size: ${theme.fonts.P4};
     font-family: "Amatic SC", cursive;
-    font-weight: 700;
+    font-weight: ${theme.weights.bold};
     text-transform: uppercase;
     letter-spacing: 1.5px;
     word-wrap: break-word;
