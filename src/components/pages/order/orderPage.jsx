@@ -6,6 +6,7 @@ import Main from "./Main";
 
 export default function OrderPage() {
   //state
+  const { userName } = useParams();
 
   //comportements
 
@@ -13,7 +14,7 @@ export default function OrderPage() {
   return (
     <OrderPageStyled>
       <div className="container">
-        <NavBar></NavBar>
+        <NavBar userName={userName}></NavBar>
         <Main />
       </div>
     </OrderPageStyled>
