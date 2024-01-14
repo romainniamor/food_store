@@ -29,9 +29,9 @@ const spacing = {
 };
 
 const fonts = {
-  XXXS: "8px",
-  XXS: "10px",
-  XS: "12px",
+  xxs: "8px",
+  xs: "10px",
+  s: "12px",
   P0: "15px",
   P1: "18px",
   P2: "20px",
