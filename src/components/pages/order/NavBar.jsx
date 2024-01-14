@@ -2,6 +2,7 @@ import styled from "styled-components";
 import NavBarRightSide from "./NavBarRightSide";
 import Logo from "../../reusableUi/Logo";
 import { theme } from "../../../theme/index";
+import { refreshPage } from "../../../utils/window";
 
 export default function NavBar({ userName }) {
   //state
@@ -11,7 +12,7 @@ export default function NavBar({ userName }) {
   //render
   return (
     <NavBarStyled>
-      <Logo />
+      <Logo className="logo-nav" onClick={refreshPage} />
       <NavBarRightSide userName={userName} />
     </NavBarStyled>
   );
@@ -22,7 +23,11 @@ const NavBarStyled = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 70px 0 20px;
+  padding: 5px 70px 5px 20px;
   width: 100%;
   color: ${theme.colors.greyBlue};
+
+  .logo-nav {
+    cursor: pointer;
+  }
 `;
