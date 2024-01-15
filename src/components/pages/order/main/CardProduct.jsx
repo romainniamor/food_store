@@ -11,7 +11,7 @@ export default function CardProduct({ title, img, price }) {
       <div className="info-text">
         <div className="title">{title}</div>
         <div className="description">
-          <p className="price">{formatPrice(price)} €</p>
+          <p className="price">{formatPrice(price)}</p>
           <div className="button-box">
             <button>ajouter</button>
           </div>
