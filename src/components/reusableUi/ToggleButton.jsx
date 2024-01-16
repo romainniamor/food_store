@@ -5,8 +5,8 @@ import styled from "styled-components";
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked = null,
-  labelIfUnchecked = null,
+  labelIfChecked = "Fermer",
+  labelIfUnchecked = "Ouvrir",
 }) {
   //state
 
