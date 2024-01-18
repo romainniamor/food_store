@@ -31,7 +31,7 @@ const ProfileStyled = styled.div`
     text-align: center;
 
     p {
-      font-size: ${theme.fonts.P0};
+      font-size: ${theme.fonts.sm};
     }
 
     .userName {

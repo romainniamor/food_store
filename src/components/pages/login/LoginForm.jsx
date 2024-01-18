@@ -83,7 +83,7 @@ const LoginFormStyled = styled.div`
 
     .loginIcon {
       color: ${theme.colors.greyMedium};
-      font-size: ${theme.fonts.P0};
+      font-size: ${theme.fonts.sm};
     }
   }
 `;

@@ -20,7 +20,7 @@ const LoginInputStyled = styled.div`
   padding: 18px 24px;
   gap: ${theme.spacing.xs};
   color: ${theme.colors.greyLight};
-  font-size: ${theme.fonts.P0};
+  font-size: ${theme.fonts.sm};
 
   input {
     border: none;
