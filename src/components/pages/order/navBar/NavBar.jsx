@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import NavBarRightSide from "./NavBarRightSide";
+
 import Logo from "../../../reusableUi/Logo";
 import { theme } from "../../../../theme/index";
 import { refreshPage } from "../../../../utils/window";
+import NavBarRightSide from "./NavBarRightSide";
 
-export default function NavBar({ userName }) {
+export default function NavBar() {
   //state
 
   //comportements
@@ -13,7 +14,7 @@ export default function NavBar({ userName }) {
   return (
     <NavBarStyled>
       <Logo className="logo-nav" onClick={refreshPage} />
-      <NavBarRightSide userName={userName} />
+      <NavBarRightSide />
     </NavBarStyled>
   );
 }

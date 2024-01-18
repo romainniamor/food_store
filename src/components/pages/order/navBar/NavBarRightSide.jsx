@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import Profile from "./Profile";
 import ToggleButton from "../../../reusableUi/ToggleButton";
-import { useState } from "react";
+import { useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OrderContext from "../../../../contexts/orderContext";
 
-export default function NavBarRightSide({ userName }) {
+export default function NavBarRightSide() {
   //state
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
 
   const displayToastNotification = () => {
     setIsModeAdmin(!isModeAdmin);
@@ -39,7 +40,7 @@ export default function NavBarRightSide({ userName }) {
         theme="dark"
       />
 
-      <Profile userName={userName} />
+      <Profile />
     </NavBarRightSideStyled>
   );
 }

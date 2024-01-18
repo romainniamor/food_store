@@ -3,7 +3,8 @@ import { BsPersonCircle } from "react-icons/bs";
 import { useParams, Link } from "react-router-dom";
 import { theme } from "../../../../theme";
 
-export default function Profile({ userName }) {
+export default function Profile() {
+  const { userName } = useParams();
   return (
     <ProfileStyled>
       <div className="user-box">
