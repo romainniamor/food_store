@@ -12,7 +12,6 @@ export default function AdminTabs() {
   const {
     isCollapsed,
     setIsCollapsed,
-
     currentTabSelected,
     setCurrentTabSelected,
   } = useContext(OrderContext);
@@ -32,8 +31,8 @@ export default function AdminTabs() {
     <AdminTabsStyled>
       <Tab
         icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
-        onclick={() => setIsCollapsed(!isCollapsed)}
-        classname={isCollapsed ? "active" : ""}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "active" : ""}
       />
 
       {tabs.map((tab) => {
