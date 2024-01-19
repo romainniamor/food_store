@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme/index";
 import Tab from "../../../../reusableUi/Tab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdModeEditOutline } from "react-icons/md";
 import OrderContext from "../../../../../contexts/orderContext";
+import { getTabsConfig } from "./getTabsConfig";
 
 export default function AdminTabs() {
   //state
@@ -13,62 +12,38 @@ export default function AdminTabs() {
   const {
     isCollapsed,
     setIsCollapsed,
-    isAddTabSelected,
-    setIsAddTabSelected,
-    isEditTabSelected,
-    setIsEditTabSelected,
+
+    currentTabSelected,
+    setCurrentTabSelected,
   } = useContext(OrderContext);
 
   //comportements
-  // const togggleIsCollapsed = () => {
-  //   setIsCollapsed(!isCollapsed);
-  // };
 
   const selectTab = (tabselected) => {
-    setIsCollapsed(false);
-
-    if (tabselected === "add") {
-      setIsAddTabSelected(true);
-      setIsEditTabSelected(false);
-    }
-
-    if (tabselected === "edit") {
-      setIsEditTabSelected(true);
-      setIsAddTabSelected(false);
-    }
+    setIsCollapsed(false); //ouverture du pannel
+    setCurrentTabSelected(tabselected); //reactualise l onglet selectionné
   };
 
-  const tabsConfig = [
-    {
-      label: "",
-      icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-      onClick: () => setIsCollapsed(!isCollapsed),
-      className: isCollapsed ? "active" : "",
-    },
-    {
-      label: "Ajouter un produit",
-      icon: <AiOutlinePlus />,
-      onClick: () => selectTab("add"),
-      className: isAddTabSelected ? "active" : "",
-    },
-    {
-      label: "Editer un produit",
-      icon: <MdModeEditOutline />,
-      onClick: () => selectTab("edit"),
-      className: isEditTabSelected ? "active" : "",
-    },
-  ];
+  const tabs = getTabsConfig(currentTabSelected);
+
+  //render
 
   return (
     <AdminTabsStyled>
-      {tabsConfig.map((tab) => {
+      <Tab
+        icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+        onclick={() => setIsCollapsed(!isCollapsed)}
+        classname={isCollapsed ? "active" : ""}
+      />
+
+      {tabs.map((tab) => {
         return (
           <Tab
-            key={tab.label}
+            key={tab.index}
             icon={tab.icon}
             label={tab.label}
             className={tab.className}
-            onClick={tab.onClick}
+            onClick={() => selectTab(tab.index)}
           />
         );
       })}
