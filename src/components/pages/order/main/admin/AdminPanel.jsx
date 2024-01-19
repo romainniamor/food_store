@@ -1,9 +1,19 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../theme/index";
+import OrderContext from "../../../../../contexts/orderContext";
 
 export default function AdminPanel() {
-  return <AdminPanelStyled>AdminPanel</AdminPanelStyled>;
+  const { isAddTabSelected, isEditTabSelected } = useContext(OrderContext);
+  return (
+    <AdminPanelStyled>
+      {isAddTabSelected ? (
+        <div>Ajouter un produit</div>
+      ) : (
+        <div>Editer un produit</div>
+      )}
+    </AdminPanelStyled>
+  );
 }
 
 const AdminPanelStyled = styled.div`

@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function Tab({ icon, content, onClick, className }) {
+export default function Tab({ icon, label, onClick, className }) {
   return (
     <TabStyled onClick={onClick} className={className}>
       <div className="icon">{icon}</div>
-      <div className="content">{content}</div>
+      {label && <div className="label">{label}</div>}
     </TabStyled>
   );
 }
@@ -20,6 +20,7 @@ const TabStyled = styled.button`
   left: 5%;
 
   display: flex;
+  gap: 17px;
   justify-content: center;
   align-items: center;
 
@@ -39,6 +40,10 @@ const TabStyled = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .label:hover {
+    text-decoration: underline;
   }
 
   &:hover {
