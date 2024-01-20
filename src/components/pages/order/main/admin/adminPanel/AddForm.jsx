@@ -12,30 +12,13 @@ export default function AddForm() {
     <AddFormStyled>
       <div className="image-preview">aucune image </div>
       <div className="input-fieds">
-        <TextInput
-          Icon={<FaHamburger className="add-product-icon" />}
-          value={""}
-          onChange={() => {}}
-          placeholder={"Nom du produit (ex: Super Burger)"}
-        />
-        <TextInput
-          Icon={<BsFillCameraFill className="add-product-icon" />}
-          value={""}
-          onChange={() => {}}
-          placeholder={
-            "Lien URL d'une image (ex: https://la-photo-du-super-burger.png)"
-          }
-        />
-        <TextInput
-          Icon={<MdOutlineEuro className="add-product-icon" />}
-          value={""}
-          onChange={() => {}}
-          placeholder={"Prix"}
-        />
-        <button className="submit-button">
-          Ajouter un nouveau produit au menu
-        </button>
+        <input type="text" placeholder="Produit" />
+        <input type="text" placeholder="Url" />
+        <input type="text" placeholder="Prix" />
       </div>
+      <button className="submit-button">
+        Ajouter un nouveau produit au menu
+      </button>
     </AddFormStyled>
   );
 }
@@ -43,39 +26,27 @@ export default function AddForm() {
 const AddFormStyled = styled.form`
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 1fr 1fr;
-
-  margin-left: 71px;
-  margin-top: 31px;
+  grid-template-rows: repeat(4, 1fr);
+  background-color: blue;
   width: 70%;
-  height: auto;
+  height: 100%;
 
   .image-preview {
-    grid-column: 1;
-    grid-row: 1 / 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: capitalize;
-    border: none;
-    color: ${theme.colors.greySemiDark};
-    font-weight: 400;
+    grid-area: 1 / 1 / 4 / 2;
+    background: pink;
   }
 
   .input-fieds {
-    grid-column: 2;
-    grid-row: 1 / 2;
+    background-color: orange;
+    grid-area: 1 / 2 / 4 / 3;
+    display: grid;
   }
 
   .submit-button {
-    background: ${theme.colors.success};
-    border-radius: 5px;
-    color: white;
-    font-weight: 700;
-    font-size: 12px;
-    border: none;
-    padding: 10px 29px;
+    grid-area: 4 / 2 / 5 / 3;
     cursor: pointer;
+    background-color: green;
+    width: 50%;
   }
 
   .add-product-icon {
