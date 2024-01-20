@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import CardProduct from "./CardProduct";
 import { useState } from "react";
-import { fakeMenu2 as menu } from "../../../../fakeData/fakeMenu";
+import { fakeMenu as menu } from "../../../../fakeData/fakeMenu";
 
 export default function Menu() {
   //state
-  const [products, setProducts] = useState(menu);
+  const [products, setProducts] = useState(menu.MEDIUM);
 
   //comportements
 

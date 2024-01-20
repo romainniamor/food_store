@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { theme } from "../../../../../theme/index";
-import OrderContext from "../../../../../contexts/orderContext";
-import { getTabsConfig } from "./getTabsConfig";
+import { theme } from "../../../../../../theme/index";
+import OrderContext from "../../../../../../contexts/orderContext";
+import AddForm from "./AddForm";
+import EditForm from "./EditForm";
 
 export default function AdminPanel() {
   const { currentTabSelected } = useContext(OrderContext);
 
   return (
     <AdminPanelStyled>
-      {currentTabSelected === "add" && <div>Ajouter un produit</div>}
-      {currentTabSelected === "edit" && <div>Editer un produit</div>}
+      {currentTabSelected === "add" && <AddForm />}
+      {currentTabSelected === "edit" && <EditForm />}
     </AdminPanelStyled>
   );
 }
