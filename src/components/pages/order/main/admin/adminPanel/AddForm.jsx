@@ -6,10 +6,27 @@ import { MdOutlineEuro } from "react-icons/md";
 import { FiCheck } from "react-icons/fi";
 import { TiDeleteOutline } from "react-icons/ti";
 import { theme } from "../../../../../../theme/index";
+import { useContext } from "react";
+import OrderContext from "../../../../../../contexts/orderContext";
 
 export default function AddForm() {
+  //state
+  const { handleAddProduct } = useContext(OrderContext);
+
+  const newProduct = {
+    id: new Date().getTime(),
+    title: "Nouveau produit",
+    imageSource: "https://picsum.photos/200/300",
+    price: 2.6,
+  };
+
+  //comportements
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAddProduct(newProduct);
+  };
   return (
-    <AddFormStyled>
+    <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">aucune image </div>
       <div className="input-fieds">
         <input type="text" placeholder="Produit" />
