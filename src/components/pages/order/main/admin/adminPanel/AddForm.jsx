@@ -9,15 +9,17 @@ import { theme } from "../../../../../../theme/index";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../contexts/orderContext";
 
+const EMPTY_PRODUCT = {
+  title: "",
+  imageSource: "",
+  price: "",
+};
+
 export default function AddForm() {
   //state
   const { handleAddProduct } = useContext(OrderContext);
 
-  const [newProduct, setNewProduct] = useState({
-    title: "",
-    imageSource: "",
-    price: "",
-  });
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //url img random https://picsum.photos/200
 
@@ -31,7 +33,7 @@ export default function AddForm() {
     };
 
     handleAddProduct(newProductToAdd);
-    setNewProduct(newProduct);
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (e) => {
@@ -44,7 +46,7 @@ export default function AddForm() {
     <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">
         {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt="Aperçu de l'image" />
+          <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
           "Aucune image"
         )}
@@ -53,14 +55,14 @@ export default function AddForm() {
         <input
           type="text"
           name="title"
-          placeholder="Produit"
+          placeholder="Nom du produit (ex: Super Burger)"
           value={newProduct.title}
           onChange={handleChange}
         />
         <input
           type="text"
           name="imageSource"
-          placeholder="Url"
+          placeholder="Lien URL d'une image (ex: https://super-burger.png)"
           value={newProduct.imageSource}
           onChange={handleChange}
         />
