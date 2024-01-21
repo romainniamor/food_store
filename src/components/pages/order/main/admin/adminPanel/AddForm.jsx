@@ -18,6 +18,7 @@ const EMPTY_PRODUCT = {
 export default function AddForm() {
   //state
   const { handleAddProduct } = useContext(OrderContext);
+  const [isSubmited, setIsSubmited] = useState(false);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
@@ -31,9 +32,12 @@ export default function AddForm() {
       id: crypto.randomUUID(),
       ...newProduct,
     };
-
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
+    setIsSubmited(true);
+    setTimeout(() => {
+      setIsSubmited(false);
+    }, 2000);
   };
 
   const handleChange = (e) => {
@@ -74,9 +78,17 @@ export default function AddForm() {
           onChange={handleChange}
         />
       </div>
-      <button className="submit-button">
-        Ajouter un nouveau produit au menu
-      </button>
+      <div className="submit">
+        <button className="submit-button">
+          Ajouter un nouveau produit au menu
+        </button>
+        {isSubmited && (
+          <span className="submit-message">
+            <FiCheck />
+            Ajouté avec succès !
+          </span>
+        )}
+      </div>
     </AddFormStyled>
   );
 }
@@ -111,11 +123,20 @@ const AddFormStyled = styled.form`
     display: grid;
   }
 
-  .submit-button {
+  .submit {
     grid-area: 4 / 2 / 5 / 3;
-    cursor: pointer;
-    background-color: green;
-    width: 50%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+    .submit-button {
+      background-color: green;
+      width: 50%;
+    }
+    .submit-message {
+      background-color: purple;
+      display: inline-flex;
+    }
   }
 
   .add-product-icon {
