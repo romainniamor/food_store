@@ -3,6 +3,8 @@ import CardProduct from "./CardProduct";
 import { useContext } from "react";
 import OrderContext from "../../../../contexts/orderContext";
 
+const DEFAULT_IMG = "/coming-soon.png";
+
 export default function Menu() {
   //state
   const { products } = useContext(OrderContext);
@@ -17,7 +19,7 @@ export default function Menu() {
           <CardProduct
             key={product.id}
             title={product.title}
-            img={product.imageSource}
+            img={product.imageSource ? product.imageSource : DEFAULT_IMG}
             price={product.price}
           />
         );
