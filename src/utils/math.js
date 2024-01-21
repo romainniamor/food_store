@@ -1,5 +1,9 @@
 export function formatPrice(priceToFormat) {
-  let price = fixePrice(priceToFormat);
+  let price = priceToFormat;
+
+  if (!price) return 0;
+  price = replaceFrenchCommaWithDot(price);
+
   const formattedPrice = new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR",
@@ -8,6 +12,7 @@ export function formatPrice(priceToFormat) {
   return formattedPrice;
 }
 
-function fixePrice(price) {
-  return price.toFixed(2);
+export function replaceFrenchCommaWithDot(price) {
+  if (typeof price === "string") price = parseFloat(price.replace(",", "."));
+  return 0;
 }
