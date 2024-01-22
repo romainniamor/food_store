@@ -17,7 +17,7 @@ export default function AdminPanel() {
 }
 
 const AdminPanelStyled = styled.div`
-  background: ${theme.colors.background_white};
+  background: ${theme.colors.white};
   height: 250px;
   border: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.subtle};

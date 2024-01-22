@@ -30,11 +30,12 @@ export default function LoginForm() {
       <h2>Connectez-vous</h2>
       <form onSubmit={handleSubmit}>
         <TextInput
-          Icon={<BsPersonCircle className="loginIcon" />}
+          Icon={<BsPersonCircle className="login-icon" />}
           value={userName}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required
+          version="normal"
         />
         <PrimaryButton
           Icon={<FaChevronCircleRight />}
@@ -80,10 +81,5 @@ const LoginFormStyled = styled.div`
     align-items: center;
     gap: ${theme.spacing.md};
     width: 100%;
-
-    .loginIcon {
-      color: ${theme.colors.greyMedium};
-      font-size: ${theme.fonts.sm};
-    }
   }
 `;

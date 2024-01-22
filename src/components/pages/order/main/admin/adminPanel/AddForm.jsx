@@ -64,26 +64,32 @@ export default function AddForm() {
         )}
       </div>
       <div className="input-fieds">
-        <input
+        <TextInput
           type="text"
           name="title"
           placeholder="Nom du produit (ex: Super Burger)"
           value={newProduct.title}
+          Icon={<FaHamburger className="addForm-icon" />}
           onChange={handleChange}
+          version={"minimalist"}
         />
-        <input
+        <TextInput
           type="text"
           name="imageSource"
           placeholder="Lien URL d'une image (ex: https://super-burger.png)"
           value={newProduct.imageSource}
+          Icon={<BsFillCameraFill className="addForm-icon" />}
           onChange={handleChange}
+          version={"minimalist"}
         />
-        <input
+        <TextInput
           type="text"
           name="price"
           placeholder="Prix"
           value={newProduct.price}
+          Icon={<MdOutlineEuro className="addForm-icon" />}
           onChange={handleChange}
+          version={"minimalist"}
         />
       </div>
       <div className="submit">
@@ -105,17 +111,18 @@ const AddFormStyled = styled.form`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
-  background-color: blue;
+  grid-row-gap: 8px;
+  grid-column-gap: 20px;
   width: 70%;
   height: 100%;
 
   .image-preview {
     grid-area: 1 / 1 / 4 / 2;
-    background: pink;
     padding: 16px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid ${theme.colors.greySemiDark};
 
     img {
       width: 100%;
@@ -126,9 +133,10 @@ const AddFormStyled = styled.form`
   }
 
   .input-fieds {
-    background-color: orange;
+    background-color: ${theme.colors.white};
     grid-area: 1 / 2 / 4 / 3;
     display: grid;
+    grid-row-gap: 9px;
   }
 
   .submit {
@@ -147,7 +155,7 @@ const AddFormStyled = styled.form`
     }
   }
 
-  .add-product-icon {
+  .addForm-icon {
     color: ${theme.colors.greyBlue};
   }
 `;
