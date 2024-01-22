@@ -2,13 +2,17 @@ import styled from "styled-components";
 import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
 import { TiDelete } from "react-icons/ti";
+import OrderContext from "../../../../contexts/orderContext";
+import { useContext } from "react";
 
-export default function CardProduct({ title, img, price }) {
+export default function CardProduct({ title, img, price, hasDeleteButton }) {
   return (
     <CardStyled>
-      <button className="delete-button">
-        <TiDelete />
-      </button>
+      {hasDeleteButton && (
+        <button className="delete-button">
+          <TiDelete />
+        </button>
+      )}
       <div className="image">
         <img src={img} alt="product-picture" />
       </div>
