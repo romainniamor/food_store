@@ -23,6 +23,10 @@ export default function OrderPage() {
     setProducts([...products].filter((product) => product.id !== idProduct));
   };
 
+  const resetProducts = () => {
+    setProducts(menu.MEDIUM);
+  };
+
   //comportements
 
   const orderContextValue = {
@@ -36,6 +40,7 @@ export default function OrderPage() {
     setProducts,
     handleAddProduct,
     handleDeleteProduct,
+    resetProducts,
   };
 
   //render
