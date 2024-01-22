@@ -19,6 +19,10 @@ export default function OrderPage() {
     setProducts([newProduct, ...products]);
   };
 
+  const handleDeleteProduct = (idProduct) => {
+    setProducts([...products].filter((product) => product.id !== idProduct));
+  };
+
   //comportements
 
   const orderContextValue = {
@@ -31,6 +35,7 @@ export default function OrderPage() {
     products,
     setProducts,
     handleAddProduct,
+    handleDeleteProduct,
   };
 
   //render
