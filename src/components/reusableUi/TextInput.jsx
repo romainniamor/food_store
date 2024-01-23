@@ -69,7 +69,7 @@ const extraNormalStyle = css`
 
 const extraMinimalistStyle = css`
   background: ${theme.colors.background_white};
-  gap: ${theme.spacing.xs};
+  gap: ${theme.spacing.md};
   padding: 8px 24px;
   border: none;
 
