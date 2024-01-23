@@ -4,6 +4,7 @@ import { theme } from "../../../../theme";
 import { TiDelete } from "react-icons/ti";
 import OrderContext from "../../../../contexts/orderContext";
 import { useContext } from "react";
+import Button from "../../../reusableUi/Button";
 
 export default function CardProduct({
   title,
@@ -27,7 +28,13 @@ export default function CardProduct({
         <div className="description">
           <p className="price">{formatPrice(price)}</p>
           <div className="button-box">
-            <button className="add-button">ajouter</button>
+            <Button
+              content={"ajouter"}
+              version="primaryOutlined"
+              className="add-button"
+            >
+              ajouter
+            </Button>
           </div>
         </div>
       </div>
@@ -116,28 +123,6 @@ const CardStyled = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .add-button {
-      padding: 12px;
-      width: 100%;
-      color: ${theme.colors.white};
-      background-color: ${theme.colors.primary};
-      border: none;
-      border-radius: ${theme.borderRadius.round};
-      text-transform: capitalize;
-      font-size: ${theme.fonts.xs};
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${theme.colors.white};
-        color: ${theme.colors.primary};
-        border: 1px solid ${theme.colors.primary};
-      }
-      &:active {
-        background-color: ${theme.colors.primary};
-        color: ${theme.colors.white};
-      }
     }
   }
 `;

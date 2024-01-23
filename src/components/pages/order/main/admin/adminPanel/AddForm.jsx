@@ -7,6 +7,7 @@ import { FiCheck } from "react-icons/fi";
 import { theme } from "../../../../../../theme/index";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../contexts/orderContext";
+import Button from "../../../../../reusableUi/Button";
 
 const EMPTY_PRODUCT = {
   title: "",
@@ -93,9 +94,11 @@ export default function AddForm() {
         />
       </div>
       <div className="submit">
-        <button className="submit-button">
-          Ajouter un nouveau produit au menu
-        </button>
+        <Button
+          className="submit-button"
+          version="success"
+          content={" Ajouter un nouveau produit au menu"}
+        />
         {isSubmited && (
           <span className="submit-message">
             <FiCheck />
@@ -122,7 +125,9 @@ const AddFormStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid ${theme.colors.greySemiDark};
+    border-radius: ${theme.borderRadius.round};
+    border: 1px solid ${theme.colors.greyLight};
+    color: ${theme.colors.greySemiDark};
 
     img {
       width: 100%;
@@ -146,7 +151,6 @@ const AddFormStyled = styled.form`
     align-items: center;
 
     .submit-button {
-      background-color: green;
       width: 50%;
     }
     .submit-message {

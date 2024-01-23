@@ -5,7 +5,7 @@ import styled from "styled-components";
 import TextInput from "../../reusableUi/TextInput";
 import { FaChevronCircleRight } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
-import PrimaryButton from "../../reusableUi/PrimaryButton";
+import Button from "../../reusableUi/Button";
 
 export default function LoginForm() {
   //state
@@ -37,9 +37,10 @@ export default function LoginForm() {
           required
           version="normal"
         />
-        <PrimaryButton
+        <Button
           Icon={<FaChevronCircleRight />}
           content={"Accèdez à mon espace"}
+          version={"normal"}
         />
       </form>
     </LoginFormStyled>
