@@ -8,6 +8,7 @@ import { theme } from "../../../../../../theme/index";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../contexts/orderContext";
 import Button from "../../../../../reusableUi/Button";
+import ImagePreview from "./ImagePreview";
 
 export const EMPTY_PRODUCT = {
   title: "",
@@ -56,13 +57,10 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt={newProduct.title} />
-        ) : (
-          "Aucune image"
-        )}
-      </div>
+      <ImagePreview
+        title={newProduct.title}
+        imageSource={newProduct.imageSource}
+      />
       <div className="input-fieds">
         <TextInput
           type="text"
@@ -117,24 +115,6 @@ const AddFormStyled = styled.form`
   grid-column-gap: 20px;
   width: 70%;
   height: 100%;
-
-  .image-preview {
-    grid-area: 1 / 1 / 4 / 2;
-    padding: 16px 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: ${theme.borderRadius.round};
-    border: 1px solid ${theme.colors.greyLight};
-    color: ${theme.colors.greySemiDark};
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
 
   .input-fieds {
     background-color: ${theme.colors.white};
