@@ -3,7 +3,7 @@ import TextInput from "../../../../../reusableUi/TextInput";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import { FiCheck } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 import { theme } from "../../../../../../theme/index";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../contexts/orderContext";
@@ -101,7 +101,7 @@ export default function AddForm() {
         />
         {isSubmited && (
           <span className="submit-message">
-            <FiCheck />
+            <FiCheckCircle />
             Ajouté avec succès !
           </span>
         )}
@@ -150,12 +150,12 @@ const AddFormStyled = styled.form`
     gap: 5px;
     align-items: center;
 
-    .submit-button {
-      width: 50%;
-    }
     .submit-message {
-      background-color: purple;
       display: inline-flex;
+      gap: 5px;
+      color: ${theme.colors.success};
+      font-size: ${theme.fonts.s};
+      padding-left: 10px;
     }
   }
 

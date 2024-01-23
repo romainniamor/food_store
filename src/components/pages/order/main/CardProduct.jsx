@@ -28,11 +28,7 @@ export default function CardProduct({
         <div className="description">
           <p className="price">{formatPrice(price)}</p>
           <div className="button-box">
-            <Button
-              content={"ajouter"}
-              version="primaryOutlined"
-              className="add-button"
-            >
+            <Button content={"ajouter"} version="primaryOutlined">
               ajouter
             </Button>
           </div>
@@ -63,7 +59,6 @@ const CardStyled = styled.div`
     border: none;
     cursor: pointer;
     font-size: 30px;
-
     &:hover {
       color: ${theme.colors.red};
     }
