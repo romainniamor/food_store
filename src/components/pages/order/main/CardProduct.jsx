@@ -1,10 +1,25 @@
 import styled from "styled-components";
 import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
+import { TiDelete } from "react-icons/ti";
+import OrderContext from "../../../../contexts/orderContext";
+import { useContext } from "react";
+import Button from "../../../reusableUi/Button";
 
-export default function CardProduct({ title, img, price }) {
+export default function CardProduct({
+  title,
+  img,
+  price,
+  hasDeleteButton,
+  onDelete,
+}) {
   return (
     <CardStyled>
+      {hasDeleteButton && (
+        <button className="delete-button" onClick={onDelete}>
+          <TiDelete />
+        </button>
+      )}
       <div className="image">
         <img src={img} alt="product-picture" />
       </div>
@@ -13,7 +28,9 @@ export default function CardProduct({ title, img, price }) {
         <div className="description">
           <p className="price">{formatPrice(price)}</p>
           <div className="button-box">
-            <button>ajouter</button>
+            <Button content={"ajouter"} version="primaryOutlined">
+              ajouter
+            </Button>
           </div>
         </div>
       </div>
@@ -22,6 +39,7 @@ export default function CardProduct({ title, img, price }) {
 }
 
 const CardStyled = styled.div`
+  position: relative;
   background: ${theme.colors.white};
   width: 240px;
   height: 330px;
@@ -31,6 +49,20 @@ const CardStyled = styled.div`
   padding-bottom: 10px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
+
+  .delete-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: ${theme.colors.primary};
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    &:hover {
+      color: ${theme.colors.red};
+    }
+  }
 
   .image {
     width: 100%;
@@ -86,28 +118,6 @@ const CardStyled = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    button {
-      padding: 12px;
-      width: 100%;
-      color: ${theme.colors.white};
-      background-color: ${theme.colors.primary};
-      border: none;
-      border-radius: ${theme.borderRadius.round};
-      text-transform: capitalize;
-      font-size: ${theme.fonts.xs};
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${theme.colors.white};
-        color: ${theme.colors.primary};
-        border: 1px solid ${theme.colors.primary};
-      }
-      &:active {
-        background-color: ${theme.colors.primary};
-        color: ${theme.colors.white};
-      }
     }
   }
 `;

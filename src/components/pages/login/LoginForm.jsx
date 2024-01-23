@@ -5,7 +5,7 @@ import styled from "styled-components";
 import TextInput from "../../reusableUi/TextInput";
 import { FaChevronCircleRight } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
-import PrimaryButton from "../../reusableUi/PrimaryButton";
+import Button from "../../reusableUi/Button";
 
 export default function LoginForm() {
   //state
@@ -30,15 +30,17 @@ export default function LoginForm() {
       <h2>Connectez-vous</h2>
       <form onSubmit={handleSubmit}>
         <TextInput
-          Icon={<BsPersonCircle className="loginIcon" />}
+          Icon={<BsPersonCircle className="login-icon" />}
           value={userName}
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required
+          version="normal"
         />
-        <PrimaryButton
+        <Button
           Icon={<FaChevronCircleRight />}
           content={"Accèdez à mon espace"}
+          version={"normal"}
         />
       </form>
     </LoginFormStyled>
@@ -80,10 +82,5 @@ const LoginFormStyled = styled.div`
     align-items: center;
     gap: ${theme.spacing.md};
     width: 100%;
-
-    .loginIcon {
-      color: ${theme.colors.greyMedium};
-      font-size: ${theme.fonts.sm};
-    }
   }
 `;
