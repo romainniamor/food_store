@@ -1,13 +1,11 @@
 import React from "react";
+import { theme } from "../../../../../../theme/index";
+import styled from "styled-components";
 
-export default function ImagePreview({ productTitle, productImageSource }) {
+export default function ImagePreview({ title, imageSource }) {
   return (
     <ImagePreviewStyled>
-      {productImageSource ? (
-        <img src={productImageSource} alt={productTitle} />
-      ) : (
-        "Aucune image"
-      )}
+      {imageSource ? <img src={imageSource} alt={title} /> : "Aucune image"}
     </ImagePreviewStyled>
   );
 }

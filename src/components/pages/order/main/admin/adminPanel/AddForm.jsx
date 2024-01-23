@@ -3,12 +3,13 @@ import TextInput from "../../../../../reusableUi/TextInput";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import { FiCheckCircle } from "react-icons/fi";
+
 import { theme } from "../../../../../../theme/index";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../contexts/orderContext";
 import Button from "../../../../../reusableUi/Button";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 export const EMPTY_PRODUCT = {
   title: "",
@@ -96,12 +97,7 @@ export default function AddForm() {
           version="success"
           content={" Ajouter un nouveau produit au menu"}
         />
-        {isSubmited && (
-          <span className="submit-message">
-            <FiCheckCircle />
-            Ajouté avec succès !
-          </span>
-        )}
+        {isSubmited && <SubmitMessage />}
       </div>
     </AddFormStyled>
   );
@@ -128,16 +124,7 @@ const AddFormStyled = styled.form`
     display: flex;
     gap: 5px;
     align-items: center;
-
-    .submit-message {
-      display: inline-flex;
-      gap: 5px;
-      color: ${theme.colors.success};
-      font-size: ${theme.fonts.s};
-      padding-left: 10px;
-    }
   }
-
   .addForm-icon {
     color: ${theme.colors.greyBlue};
   }
