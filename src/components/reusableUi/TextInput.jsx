@@ -51,17 +51,16 @@ const TextInputStyled = styled.div`
   ${(props) => props.version === "normal" && extraNormalStyle};
   ${(props) => props.version === "minimalist" && extraMinimalistStyle};
 `;
+// dans le cas où on a pas de props dans un object
+//  const extraStyles = {
+//   normal: extraNormalStyle,
+//   minimalist: extraMinimalistStyle,
+// }
 
 /* ou
    ${(props) => {
     extraStyles[props.version];
-  }};
-
-  dans le cas où on a pas de props dans un object
-   const extraStyles = {
-    normal: extraNormalStyle,
-    minimalist: extraMinimalistStyle,
-  } */
+  }};*/
 
 const extraNormalStyle = css`
   background: ${theme.colors.white};
