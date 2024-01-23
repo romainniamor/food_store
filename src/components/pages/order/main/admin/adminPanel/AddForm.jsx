@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import OrderContext from "../../../../../../contexts/orderContext";
 import Button from "../../../../../reusableUi/Button";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   title: "",
   imageSource: "",
   price: "",
@@ -17,10 +17,9 @@ const EMPTY_PRODUCT = {
 
 export default function AddForm() {
   //state
-  const { handleAddProduct } = useContext(OrderContext);
+  const { handleAddProduct, newProduct, setNewProduct } =
+    useContext(OrderContext);
   const [isSubmited, setIsSubmited] = useState(false);
-
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //url img random https://picsum.photos/200
 
