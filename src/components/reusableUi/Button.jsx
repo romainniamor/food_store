@@ -13,12 +13,13 @@ export default function Button({ Icon, content, version = "normal", onClick }) {
 
 const ButtonStyled = styled.button`
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   display: flex;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   align-items: center;
   justify-content: center;
+  font-weight: ${theme.weights.bold};
   border-radius: ${theme.borderRadius.round};
   ${(props) => extraStyle[props.version]};
 `;
@@ -58,7 +59,7 @@ const extraStyleSuccess = css`
 `;
 
 const extraStylePrimaryOutlined = css`
-  padding: 12px;
+  padding: 12px 24px;
   background-color: ${theme.colors.primary};
   text-transform: capitalize;
   font-size: ${theme.fonts.xs};
