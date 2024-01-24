@@ -5,19 +5,19 @@ import Main from "./main/Main";
 import OrderContext from "../../../contexts/orderContext";
 import { useState } from "react";
 import { fakeMenu as menu } from "../../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "./main/admin/adminPanel/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
-  //state
+  //states
 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
-
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-
   const [products, setProducts] = useState(menu.MEDIUM);
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
+  //events
   const handleAddProduct = (newProduct) => {
     setProducts([newProduct, ...products]);
   };
@@ -30,7 +30,7 @@ export default function OrderPage() {
     setProducts(menu.MEDIUM);
   };
 
-  //comportements
+  //contextValues
 
   const orderContextValue = {
     isModeAdmin,
@@ -46,6 +46,8 @@ export default function OrderPage() {
     resetProducts,
     newProduct,
     setNewProduct,
+    productSelected,
+    setProductSelected,
   };
 
   //render

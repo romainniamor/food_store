@@ -10,11 +10,7 @@ import SubmitMessage from "./SubmitMessage";
 
 import { getInputTextConfig } from "./inputTextConfig";
 
-export const EMPTY_PRODUCT = {
-  title: "",
-  imageSource: "",
-  price: "",
-};
+import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
 
 export default function AddForm() {
   //state
