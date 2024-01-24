@@ -1,25 +1,27 @@
-import { React, useContext, useState } from "react";
+import { useContext } from "react";
 import { theme } from "../../../../../../theme/index";
 import styled from "styled-components";
-import { HiCursorClick } from "react-icons/hi";
-import EditMessage from "./EditMessage";
 import OrderContext from "../../../../../../contexts/orderContext";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusableUi/TextInput";
 import { getInputTextConfig } from "./inputTextConfig";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function EditForm() {
-  const { productSelected, setProductSelected } = useContext(OrderContext);
-  const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT);
+  //state
+  const { productSelected, setProductSelected, handleEditProduct } =
+    useContext(OrderContext);
 
   const inputTexts = getInputTextConfig(productSelected);
 
+  //comportements
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProductSelected({ ...productSelected, [name]: value }); //dynamic property name
+    const { value, name } = e.target;
+    const productBeingUpdated = { ...productSelected, [name]: value }; //dynamic property name
+    setProductSelected(productBeingUpdated); //update form
+    handleEditProduct(productBeingUpdated); // update menu
   };
 
+  //render
   return (
     <EditFormStyled>
       <ImagePreview
@@ -39,7 +41,11 @@ export default function EditForm() {
           />
         ))}
       </div>
-      <div className="submit"></div>
+      <div className="submit">
+        <p className="message">
+          Cliquez sur un produit pour le modifier en temps réel.
+        </p>
+      </div>
     </EditFormStyled>
   );
 }
@@ -68,5 +74,10 @@ const EditFormStyled = styled.form`
   }
   .addForm-icon {
     color: ${theme.colors.greyBlue};
+  }
+
+  .message {
+    font-size: ${theme.fonts.s};
+    color: ${theme.colors.primary};
   }
 `;

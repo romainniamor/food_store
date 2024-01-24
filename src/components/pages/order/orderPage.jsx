@@ -17,13 +17,27 @@ export default function OrderPage() {
   const [products, setProducts] = useState(menu.MEDIUM);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
-  //events
+  //CRUD events
   const handleAddProduct = (newProduct) => {
     setProducts([newProduct, ...products]);
   };
 
   const handleDeleteProduct = (idProduct) => {
     setProducts([...products].filter((product) => product.id !== idProduct));
+  };
+
+  const handleEditProduct = (productBeingEdited) => {
+    //copie du state
+    const productsCopy = JSON.parse(JSON.stringify(products));
+    //manip du state
+    const indexProductToEdit = products.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+
+    productsCopy[indexProductToEdit] = productBeingEdited;
+
+    //update du state
+    setProducts(productsCopy);
   };
 
   const resetProducts = () => {
@@ -48,6 +62,7 @@ export default function OrderPage() {
     setNewProduct,
     productSelected,
     setProductSelected,
+    handleEditProduct,
   };
 
   //render
