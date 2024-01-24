@@ -1,5 +1,15 @@
 import React from "react";
+import { theme } from "../../../../../../theme/index";
+import styled from "styled-components";
+import { HiCursorClick } from "react-icons/hi";
+import EditMessage from "./EditMessage";
 
 export default function EditForm() {
-  return <div>EditForm</div>;
+  return (
+    <EditFormStyled>
+      <EditMessage />
+    </EditFormStyled>
+  );
 }
+
+const EditFormStyled = styled.div``;

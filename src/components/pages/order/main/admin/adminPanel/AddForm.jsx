@@ -104,7 +104,7 @@ const AddFormStyled = styled.form`
     background-color: ${theme.colors.white};
     grid-area: 1 / 2 / 4 / 3;
     display: grid;
-    grid-row-gap: 0px;
+    grid-row-gap: 9px;
   }
 
   .submit {
