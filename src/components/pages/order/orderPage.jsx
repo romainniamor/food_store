@@ -11,7 +11,7 @@ import { deepClone } from "../../../utils/arrays";
 export default function OrderPage() {
   //states
 
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
