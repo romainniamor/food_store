@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NavBar from "./navBar/NavBar";
 import Main from "./main/Main";
 import OrderContext from "../../../contexts/orderContext";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { fakeMenu as menu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { deepClone } from "../../../utils/arrays";
@@ -17,6 +17,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [products, setProducts] = useState(menu.MEDIUM);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+  const titleEditInputRef = useRef();
 
   //CRUD
 
@@ -81,6 +82,7 @@ export default function OrderPage() {
     productSelected,
     setProductSelected,
     handleEditProduct,
+    titleEditInputRef,
   };
 
   //render

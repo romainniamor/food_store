@@ -1,21 +1,26 @@
 import { theme } from "../../theme/index";
 import { styled, css } from "styled-components";
+import React from "react";
 
 //utilisation du spread operator pour récupérer les props supplémentaires scalables
-export default function TextInput({
-  value,
-  onChange,
-  Icon,
-  version,
-  ...extraProps
-}) {
-  return (
-    <TextInputStyled version={version}>
-      <div className="icon">{Icon && Icon}</div>
-      <input type="text" value={value} onChange={onChange} {...extraProps} />
-    </TextInputStyled>
-  );
-}
+const TextInput = React.forwardRef(
+  ({ value, onChange, Icon, version, ...extraProps }, ref) => {
+    return (
+      <TextInputStyled version={version}>
+        <div className="icon">{Icon && Icon}</div>
+        <input
+          ref={ref}
+          type="text"
+          value={value}
+          onChange={onChange}
+          {...extraProps}
+        />
+      </TextInputStyled>
+    );
+  }
+);
+
+export default TextInput;
 
 const TextInputStyled = styled.div`
   width: 100%;

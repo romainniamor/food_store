@@ -8,8 +8,12 @@ import { getInputTextConfig } from "./inputTextConfig";
 
 export default function EditForm() {
   //state
-  const { productSelected, setProductSelected, handleEditProduct } =
-    useContext(OrderContext);
+  const {
+    productSelected,
+    setProductSelected,
+    handleEditProduct,
+    titleEditInputRef,
+  } = useContext(OrderContext);
 
   const inputTexts = getInputTextConfig(productSelected);
 
@@ -38,6 +42,7 @@ export default function EditForm() {
             Icon={inputText.Icon}
             onChange={handleChange}
             version={"minimalist"}
+            ref={inputText.name === "title" ? titleEditInputRef : null}
           />
         ))}
       </div>
