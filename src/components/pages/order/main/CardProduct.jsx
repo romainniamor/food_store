@@ -15,11 +15,12 @@ export default function CardProduct({
   isSelected,
 }) {
   return (
-    <CardStyled onClick={onClick} isHoverable={isHoverable}>
-      <div
-        className="card"
-        style={isSelected ? { backgroundColor: "orange" } : {}}
-      >
+    <CardStyled
+      onClick={onClick}
+      isHoverable={isHoverable}
+      isSelected={isSelected}
+    >
+      <div className="card">
         {hasDeleteButton && (
           <button className="delete-button" onClick={onDelete}>
             <TiDelete />
@@ -33,7 +34,11 @@ export default function CardProduct({
           <div className="description">
             <p className="price">{formatPrice(price)}</p>
             <div className="button-box">
-              <Button content={"ajouter"} version="primaryOutlined">
+              <Button
+                className="primary-button"
+                content={"ajouter"}
+                version={"primaryOutlined"}
+              >
                 ajouter
               </Button>
             </div>
@@ -46,7 +51,6 @@ export default function CardProduct({
 
 const CardStyled = styled.div`
   ${(props) => props.isHoverable && hoverableStyle}
-
   .card {
     position: relative;
     background: ${theme.colors.white};
@@ -78,7 +82,6 @@ const CardStyled = styled.div`
       height: auto;
       margin-top: 30px;
       margin-bottom: 20px;
-
       img {
         width: 100%;
         height: 100%;
@@ -129,14 +132,72 @@ const CardStyled = styled.div`
         justify-content: center;
       }
     }
+
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && selectedStyle}
   }
 `;
-
 const hoverableStyle = css`
   .card:hover:not(:disabled) {
     cursor: pointer;
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
     box-shadow: ${theme.shadows.orangeHighLight};
+  }
+`;
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+
+  .delete-button {
+    color: ${theme.colors.white};
+    &:active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .info-text {
+    .description {
+      .price {
+        color: white;
+      }
+
+      Button {
+        color: ${theme.colors.primary};
+        background-color: ${theme.colors.white};
+        border: 1px solid ${theme.colors.white};
+        transition: all 200ms ease-out;
+        &:hover {
+          color: ${theme.colors.white};
+          background-color: ${theme.colors.primary};
+          border: 1px solid ${theme.colors.white};
+          transition: all 200ms ease-out;
+        }
+        &:active {
+          background-color: ${theme.colors.white};
+          color: ${theme.colors.primary};
+        }
+
+        &.is-disabled {
+          opacity: 50%;
+          cursor: not-allowed;
+          z-index: 2;
+        }
+
+        &.with-focus {
+          border: 1px solid white;
+          background-color: ${theme.colors.white};
+          color: ${theme.colors.primary};
+          &:hover {
+            color: ${theme.colors.white};
+            background-color: ${theme.colors.primary};
+            border: 1px solid ${theme.colors.white};
+          }
+          &:active {
+            background-color: ${theme.colors.white};
+            color: ${theme.colors.primary};
+          }
+        }
+      }
+    }
   }
 `;
