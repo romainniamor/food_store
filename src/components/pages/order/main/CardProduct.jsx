@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { styled, css } from "styled-components";
 import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
@@ -38,6 +39,7 @@ export default function CardProduct({
                 className="primary-button"
                 content={"ajouter"}
                 version={"primaryOutlined"}
+                onClick={(e) => e.stopPropagation()}
               >
                 ajouter
               </Button>
@@ -50,7 +52,7 @@ export default function CardProduct({
 }
 
 const CardStyled = styled.div`
-  ${(props) => props.isHoverable && hoverableStyle}
+  ${({ isHoverable }) => isHoverable && hoverableStyle}
   .card {
     position: relative;
     background: ${theme.colors.white};
