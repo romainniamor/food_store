@@ -21,8 +21,11 @@ export default function Menu() {
   //comportements
 
   const handleClick = (id) => {
-    const productClickedOn = products.find((product) => product.id === id);
-    setProductSelected(productClickedOn);
+    if (isModeAdmin) {
+      const productClickedOn = products.find((product) => product.id === id);
+      setProductSelected(productClickedOn);
+    }
+    return;
   };
 
   const checkIfProductIsClick = (idProductInMenu, idProductClickOn) => {
