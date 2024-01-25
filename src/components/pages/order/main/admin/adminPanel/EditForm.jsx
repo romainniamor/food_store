@@ -28,7 +28,7 @@ export default function EditForm() {
         title={productSelected.title}
         imageSource={productSelected.imageSource}
       />
-      <div className="input-fieds">
+      <div className="input-fields">
         {inputTexts.map((inputText) => (
           <TextInput
             key={inputText.id}
@@ -42,9 +42,9 @@ export default function EditForm() {
         ))}
       </div>
       <div className="submit">
-        <p className="message">
+        <div className="message">
           Cliquez sur un produit pour le modifier en temps réel.
-        </p>
+        </div>
       </div>
     </EditFormStyled>
   );
@@ -59,7 +59,7 @@ const EditFormStyled = styled.form`
   width: 70%;
   height: 100%;
 
-  .input-fieds {
+  .input-fields {
     background-color: ${theme.colors.white};
     grid-area: 1 / 2 / 4 / 3;
     display: grid;

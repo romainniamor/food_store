@@ -20,8 +20,8 @@ export default function Menu() {
   //comportements
 
   const handleClick = (id) => {
-    const productSelected = products.find((product) => product.id === id);
-    setProductSelected(productSelected);
+    const productClickedOn = products.find((product) => product.id === id);
+    setProductSelected(productClickedOn);
   };
 
   //render
@@ -44,6 +44,7 @@ export default function Menu() {
           hasDeleteButton={isModeAdmin}
           onDelete={() => handleDeleteProduct(product.id)}
           onClick={() => handleClick(product.id)}
+          isHoverable={isModeAdmin}
         />
       ))}
     </MenuStyled>
