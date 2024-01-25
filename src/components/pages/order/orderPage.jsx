@@ -6,6 +6,7 @@ import OrderContext from "../../../contexts/orderContext";
 import { useState } from "react";
 import { fakeMenu as menu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from "../../../utils/arrays";
 
 export default function OrderPage() {
   //states
@@ -17,18 +18,35 @@ export default function OrderPage() {
   const [products, setProducts] = useState(menu.MEDIUM);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
-  //CRUD events
+  //CRUD
+
   const handleAddProduct = (newProduct) => {
-    setProducts([newProduct, ...products]);
+    //copie du array
+    const productsCopy = deepClone(products);
+
+    //manip du array
+    const productsUpdated = [newProduct, ...productsCopy];
+
+    //update du state
+    setProducts(productsUpdated);
   };
 
   const handleDeleteProduct = (idProduct) => {
-    setProducts([...products].filter((product) => product.id !== idProduct));
+    //copy
+    const productsCopy = deepClone(products);
+
+    //manip du tableau
+    const productsUpdated = productsCopy.filter(
+      (product) => product.id !== idProduct
+    );
+
+    //maj state
+    setProducts(productsUpdated);
   };
 
   const handleEditProduct = (productBeingEdited) => {
     //copie du state
-    const productsCopy = JSON.parse(JSON.stringify(products));
+    const productsCopy = deepClone(products);
     //manip du state
     const indexProductToEdit = products.findIndex(
       (product) => product.id === productBeingEdited.id
