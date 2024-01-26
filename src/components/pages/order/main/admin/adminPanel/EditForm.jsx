@@ -5,6 +5,8 @@ import OrderContext from "../../../../../../contexts/orderContext";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusableUi/TextInput";
 import { getInputTextConfig } from "./inputTextConfig";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import EditMessage from "./EditMessage";
 
 export default function EditForm() {
   //state
@@ -26,7 +28,9 @@ export default function EditForm() {
   };
 
   //render
-  return (
+  return productSelected === EMPTY_PRODUCT ? (
+    <EditMessage /> //if no product selected, don't render anything
+  ) : (
     <EditFormStyled>
       <ImagePreview
         title={productSelected.title}

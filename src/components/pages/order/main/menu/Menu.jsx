@@ -4,6 +4,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../contexts/orderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const DEFAULT_IMG = "/coming-soon.png";
 
@@ -41,6 +42,8 @@ export default function Menu() {
   const handleCardDelete = (e, id) => {
     e.stopPropagation();
     handleDeleteProduct(id);
+    productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
+    titleEditInputRef.current.focus();
   };
 
   //render
