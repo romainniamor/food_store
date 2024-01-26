@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { theme } from "../../theme/index";
 import { styled, css } from "styled-components";
 import React from "react";
@@ -68,16 +69,17 @@ const TextInputStyled = styled.div`
   }};*/
 
 const extraNormalStyle = css`
+  //used for loginForm
   background: ${theme.colors.white};
   gap: ${theme.spacing.s};
 `;
 
 const extraMinimalistStyle = css`
+  //used for adminForm
   background: ${theme.colors.background_white};
   gap: ${theme.spacing.md};
   padding: 8px 24px;
   border: none;
-
   input:focus {
     outline: none;
   }

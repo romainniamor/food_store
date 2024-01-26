@@ -12,7 +12,6 @@ export default function InfoEditForm() {
 }
 
 const InfoEditFormStyled = styled.div`
-    font-size: ${theme.fonts.s};
-    color: ${theme.colors.primary};
-  }
+  font-size: ${theme.fonts.s};
+  color: ${theme.colors.primary};
 `;
