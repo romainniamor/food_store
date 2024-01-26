@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import OrderContext from "../../../../../../contexts/orderContext";
 import AdminForm from "./AdminForm";
 import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
+import SubmitMessage from "./SubmitMessage";
+import Button from "../../../../../reusableUi/Button";
 
 export default function AddForm() {
   //state
@@ -48,6 +50,13 @@ export default function AddForm() {
       product={newProduct}
       isSubmited={isSubmited}
       version={"minimalist"}
-    ></AdminForm>
+    >
+      <Button
+        className="submit-button"
+        version="success"
+        content={" Ajouter un nouveau produit au menu"}
+      />
+      {isSubmited && <SubmitMessage />}
+    </AdminForm>
   );
 }

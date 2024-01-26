@@ -3,6 +3,7 @@ import OrderContext from "../../../../../../contexts/orderContext";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import EditMessage from "./EditMessage";
 import AdminForm from "./AdminForm";
+import InfoEditForm from "./InfoEditForm";
 
 export default function EditForm() {
   //state
@@ -30,6 +31,8 @@ export default function EditForm() {
       product={productSelected}
       version={"minimalist"}
       ref={titleEditInputRef}
-    ></AdminForm>
+    >
+      <InfoEditForm />
+    </AdminForm>
   );
 }

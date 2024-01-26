@@ -1,15 +1,14 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusableUi/TextInput";
 import { getInputTextConfig } from "./inputTextConfig";
-import Button from "../../../../../reusableUi/Button";
-import SubmitMessage from "./SubmitMessage";
 import React from "react";
-import InfoEditForm from "./InfoEditForm";
 
 const AdminForm = React.forwardRef(
-  ({ onSubmit, onChange, product, isSubmited, version }, ref) => {
+  ({ onSubmit, onChange, product, version, children }, ref) => {
     //state
 
     //comportements
@@ -31,20 +30,7 @@ const AdminForm = React.forwardRef(
             />
           ))}
         </div>
-        <div className="submit">
-          {onSubmit ? (
-            <div className="button-box">
-              <Button
-                className="submit-button"
-                version="success"
-                content={" Ajouter un nouveau produit au menu"}
-              />
-              {isSubmited && <SubmitMessage />}
-            </div>
-          ) : (
-            <InfoEditForm />
-          )}
-        </div>
+        <div className="submit">{children}</div>
       </AdminFormStyled>
     );
   }
