@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { styled, css } from "styled-components";
+import { styled, css, StyleSheetManager } from "styled-components";
 import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
 import { TiDelete } from "react-icons/ti";
@@ -16,38 +16,44 @@ export default function CardProduct({
   isselected,
 }) {
   return (
-    <CardStyled
-      onClick={onClick}
-      ishoverable={ishoverable}
-      isselected={isselected}
+    <StyleSheetManager
+      shouldForwardProp={(prop) =>
+        prop !== "ishoverable" && prop !== "isselected"
+      }
     >
-      <div className="card">
-        {hasDeleteButton && (
-          <button className="delete-button" onClick={onDelete}>
-            <TiDelete />
-          </button>
-        )}
-        <div className="image">
-          <img src={img} alt="product-picture" />
-        </div>
-        <div className="info-text">
-          <div className="title">{title}</div>
-          <div className="description">
-            <p className="price">{formatPrice(price)}</p>
-            <div className="button-box">
-              <Button
-                className="primary-button"
-                content={"ajouter"}
-                version={"primaryOutlined"}
-                onClick={(e) => e.stopPropagation()}
-              >
-                ajouter
-              </Button>
+      <CardStyled
+        onClick={onClick}
+        ishoverable={ishoverable}
+        isselected={isselected}
+      >
+        <div className="card">
+          {hasDeleteButton && (
+            <button className="delete-button" onClick={onDelete}>
+              <TiDelete />
+            </button>
+          )}
+          <div className="image">
+            <img src={img} alt="product-picture" />
+          </div>
+          <div className="info-text">
+            <div className="title">{title}</div>
+            <div className="description">
+              <p className="price">{formatPrice(price)}</p>
+              <div className="button-box">
+                <Button
+                  className="primary-button"
+                  content={"ajouter"}
+                  version={"primaryOutlined"}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  ajouter
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </CardStyled>
+      </CardStyled>
+    </StyleSheetManager>
   );
 }
 
