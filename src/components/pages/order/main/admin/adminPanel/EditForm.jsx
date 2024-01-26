@@ -7,6 +7,7 @@ import TextInput from "../../../../../reusableUi/TextInput";
 import { getInputTextConfig } from "./inputTextConfig";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import EditMessage from "./EditMessage";
+import InfoEditForm from "./InfoEditForm";
 
 export default function EditForm() {
   //state
@@ -51,9 +52,7 @@ export default function EditForm() {
         ))}
       </div>
       <div className="submit">
-        <div className="message">
-          Cliquez sur un produit pour le modifier en temps réel.
-        </div>
+        <InfoEditForm />
       </div>
     </EditFormStyled>
   );
@@ -81,12 +80,8 @@ const EditFormStyled = styled.form`
     gap: 5px;
     align-items: center;
   }
+
   .addForm-icon {
     color: ${theme.colors.greyBlue};
-  }
-
-  .message {
-    font-size: ${theme.fonts.s};
-    color: ${theme.colors.primary};
   }
 `;
