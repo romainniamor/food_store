@@ -3,34 +3,67 @@ import styled from "styled-components";
 import NavBar from "./navBar/NavBar";
 import Main from "./main/Main";
 import OrderContext from "../../../contexts/orderContext";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { fakeMenu as menu } from "../../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "./main/admin/adminPanel/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from "../../../utils/arrays";
 
 export default function OrderPage() {
-  //state
+  //states
 
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
-
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-
   const [products, setProducts] = useState(menu.MEDIUM);
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+  const titleEditInputRef = useRef();
+
+  //CRUD
 
   const handleAddProduct = (newProduct) => {
-    setProducts([newProduct, ...products]);
+    //copie du array
+    const productsCopy = deepClone(products);
+
+    //manip du array
+    const productsUpdated = [newProduct, ...productsCopy];
+
+    //update du state
+    setProducts(productsUpdated);
   };
 
   const handleDeleteProduct = (idProduct) => {
-    setProducts([...products].filter((product) => product.id !== idProduct));
+    //copy
+    const productsCopy = deepClone(products);
+
+    //manip du tableau
+    const productsUpdated = productsCopy.filter(
+      (product) => product.id !== idProduct
+    );
+
+    //maj state
+    setProducts(productsUpdated);
+  };
+
+  const handleEditProduct = (productBeingEdited) => {
+    //copie du state
+    const productsCopy = deepClone(products);
+    //manip du state
+    const indexProductToEdit = products.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+
+    productsCopy[indexProductToEdit] = productBeingEdited;
+
+    //update du state
+    setProducts(productsCopy);
   };
 
   const resetProducts = () => {
     setProducts(menu.MEDIUM);
   };
 
-  //comportements
+  //contextValues
 
   const orderContextValue = {
     isModeAdmin,
@@ -46,6 +79,10 @@ export default function OrderPage() {
     resetProducts,
     newProduct,
     setNewProduct,
+    productSelected,
+    setProductSelected,
+    handleEditProduct,
+    titleEditInputRef,
   };
 
   //render

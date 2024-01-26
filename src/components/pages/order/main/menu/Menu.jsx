@@ -4,15 +4,47 @@ import { useContext } from "react";
 import OrderContext from "../../../../../contexts/orderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const DEFAULT_IMG = "/coming-soon.png";
 
 export default function Menu() {
-  const { products, isModeAdmin, handleDeleteProduct, resetProducts } =
-    useContext(OrderContext);
+  const {
+    products,
+    isModeAdmin,
+    handleDeleteProduct,
+    resetProducts,
+    productSelected,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditInputRef,
+  } = useContext(OrderContext);
   //state
 
   //comportements
+
+  const handleClick = async (id) => {
+    if (isModeAdmin) {
+      const productClickedOn = products.find((product) => product.id === id);
+      await setIsCollapsed(false);
+      await setCurrentTabSelected("edit");
+      await setProductSelected(productClickedOn);
+      titleEditInputRef.current.focus();
+    }
+    return;
+  };
+
+  const checkIfProductIsClick = (idProductInMenu, idProductClickOn) => {
+    return idProductInMenu === idProductClickOn;
+  };
+
+  const handleCardDelete = (e, id) => {
+    e.stopPropagation();
+    handleDeleteProduct(id);
+    productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
+    titleEditInputRef.current.focus();
+  };
 
   //render
 
@@ -32,7 +64,10 @@ export default function Menu() {
           img={product.imageSource ? product.imageSource : DEFAULT_IMG}
           price={product.price}
           hasDeleteButton={isModeAdmin}
-          onDelete={() => handleDeleteProduct(product.id)}
+          onDelete={(e) => handleCardDelete(e, product.id)}
+          onClick={() => handleClick(product.id)}
+          ishoverable={isModeAdmin}
+          isselected={checkIfProductIsClick(productSelected.id, product.id)}
         />
       ))}
     </MenuStyled>
