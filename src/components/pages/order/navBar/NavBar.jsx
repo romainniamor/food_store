@@ -26,6 +26,7 @@ const NavBarStyled = styled.nav`
   justify-content: space-between;
   padding: 5px 70px 5px 20px;
   width: 100%;
+  height: 100px;
   color: ${theme.colors.greyBlue};
   border-bottom: 1px solid ${theme.colors.greyLight};
 
