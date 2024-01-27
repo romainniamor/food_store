@@ -4,9 +4,8 @@ import NavBar from "./navBar/NavBar";
 import Main from "./main/Main";
 import OrderContext from "../../../contexts/orderContext";
 import { useState, useRef } from "react";
-import { fakeMenu as menu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
-import { deepClone } from "../../../utils/arrays";
+import { useProducts } from "../../../hooks/useProducts";
 
 export default function OrderPage() {
   //states
@@ -15,53 +14,18 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [products, setProducts] = useState(menu.MEDIUM);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditInputRef = useRef();
 
-  //CRUD
+  //comportements via custom hooks
 
-  const handleAddProduct = (newProduct) => {
-    //copie du array
-    const productsCopy = deepClone(products);
-
-    //manip du array
-    const productsUpdated = [newProduct, ...productsCopy];
-
-    //update du state
-    setProducts(productsUpdated);
-  };
-
-  const handleDeleteProduct = (idProduct) => {
-    //copy
-    const productsCopy = deepClone(products);
-
-    //manip du tableau
-    const productsUpdated = productsCopy.filter(
-      (product) => product.id !== idProduct
-    );
-
-    //maj state
-    setProducts(productsUpdated);
-  };
-
-  const handleEditProduct = (productBeingEdited) => {
-    //copie du state
-    const productsCopy = deepClone(products);
-    //manip du state
-    const indexProductToEdit = products.findIndex(
-      (product) => product.id === productBeingEdited.id
-    );
-
-    productsCopy[indexProductToEdit] = productBeingEdited;
-
-    //update du state
-    setProducts(productsCopy);
-  };
-
-  const resetProducts = () => {
-    setProducts(menu.MEDIUM);
-  };
+  const {
+    handleAddProduct,
+    handleDeleteProduct,
+    handleEditProduct,
+    resetProducts,
+    products,
+  } = useProducts();
 
   //contextValues
 
@@ -73,7 +37,6 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     products,
-    setProducts,
     handleAddProduct,
     handleDeleteProduct,
     resetProducts,

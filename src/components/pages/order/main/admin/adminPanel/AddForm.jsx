@@ -5,11 +5,13 @@ import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
 import SubmitMessage from "./SubmitMessage";
 import Button from "../../../../../reusableUi/Button";
 
+import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
+
 export default function AddForm() {
   //state
   const { handleAddProduct, newProduct, setNewProduct } =
     useContext(OrderContext);
-  const [isSubmited, setIsSubmited] = useState(false);
+  const { isSubmited, displaySuccessMessage } = useSuccessMessage(3000); //custom hook
 
   //comportements
 
@@ -22,10 +24,7 @@ export default function AddForm() {
     };
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
-    setIsSubmited(true);
-    setTimeout(() => {
-      setIsSubmited(false);
-    }, 2000);
+    displaySuccessMessage();
   };
 
   const priceInputValid = (inputValue) => {
