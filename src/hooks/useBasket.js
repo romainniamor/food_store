@@ -10,17 +10,27 @@ export const useBasket = () => {
     //copy state
     const basketCopy = deepClone(basket);
 
-    const isProductInBasket =
-      findInArray(basket, productToAdd.id) !== undefined;
+    const productFoundInBasket = findInArray(basket, productToAdd.id);
 
-    if (!isProductInBasket) {
+    if (!productFoundInBasket) {
       const newBasketProduct = { ...productToAdd, quantity: 1 };
       //manip copy
       const basketUpdated = [newBasketProduct, ...basketCopy];
       //update state
       setBasket(basketUpdated);
-    } else {
       return;
+    }
+    //find product index in basket
+    incrementQuantity();
+
+    function incrementQuantity() {
+      const indexOfBasketProductToIncrement = basket.findIndex(
+        (product) => product.id === productToAdd.id
+      );
+      //increment quantity ++
+      basketCopy[indexOfBasketProductToIncrement].quantity++;
+      //update state
+      setBasket(basketCopy);
     }
   };
 
