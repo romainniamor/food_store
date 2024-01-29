@@ -6,6 +6,7 @@ import OrderContext from "../../../contexts/orderContext";
 import { useState, useRef } from "react";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useProducts } from "../../../hooks/useProducts";
+import { useBasket } from "../../../hooks/useBasket";
 
 export default function OrderPage() {
   //states
@@ -27,6 +28,8 @@ export default function OrderPage() {
     products,
   } = useProducts();
 
+  const { basket } = useBasket();
+
   //contextValues
 
   const orderContextValue = {
@@ -46,6 +49,7 @@ export default function OrderPage() {
     setProductSelected,
     handleEditProduct,
     titleEditInputRef,
+    basket,
   };
 
   //render

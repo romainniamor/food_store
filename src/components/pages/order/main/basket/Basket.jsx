@@ -3,10 +3,16 @@ import Footer from "./Footer";
 import Banner from "./Banner";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/math";
-import BasketBody from "./BasketBody";
+
+import EmptyBasket from "./EmptyBasket";
+
+import { useContext } from "react";
+import orderContext from "../../../../../contexts/orderContext";
 
 export default function Basket() {
   //state
+
+  const { basket } = useContext(orderContext);
 
   //comportements
 
@@ -16,7 +22,7 @@ export default function Basket() {
       <Banner>
         <Total amoutToPay={formatPrice(0)} />
       </Banner>
-      <BasketBody />
+      {basket.length === 0 ? <EmptyBasket /> : <div>panier</div>}
       <Banner>
         <Footer />
       </Banner>
