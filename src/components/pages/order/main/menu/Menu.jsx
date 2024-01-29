@@ -5,6 +5,7 @@ import OrderContext from "../../../../../contexts/orderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { findInArray } from "../../../../../utils/arrays";
 
 const DEFAULT_IMG = "/coming-soon.png";
 
@@ -19,6 +20,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditInputRef,
+    handleAddToBasket,
   } = useContext(OrderContext);
 
   //state
@@ -27,7 +29,7 @@ export default function Menu() {
 
   const handleClick = async (id) => {
     if (isModeAdmin) {
-      const productClickedOn = products.find((product) => product.id === id);
+      const productClickedOn = findInArray(products, id);
       await setIsCollapsed(false);
       await setCurrentTabSelected("edit");
       await setProductSelected(productClickedOn);
@@ -45,6 +47,13 @@ export default function Menu() {
     handleDeleteProduct(id);
     productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
     titleEditInputRef.current.focus();
+  };
+
+  const handleAddButton = (e, idProductToAdd) => {
+    e.stopPropagation();
+    const productToAdd = findInArray(products, idProductToAdd);
+    console.log("productToAdd", productToAdd);
+    handleAddToBasket(productToAdd);
   };
 
   //render
@@ -69,6 +78,7 @@ export default function Menu() {
           onClick={() => handleClick(product.id)}
           ishoverable={isModeAdmin}
           isselected={checkIfProductIsClick(productSelected.id, product.id)}
+          onAdd={(e) => handleAddButton(e, product.id)}
         />
       ))}
     </MenuStyled>

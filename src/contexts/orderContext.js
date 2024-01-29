@@ -33,4 +33,6 @@ export default createContext({
 
   basket: [],
   setBasket: () => {},
+
+  handleAddToBasket: () => {},
 });

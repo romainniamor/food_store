@@ -14,6 +14,7 @@ export default function CardProduct({
   onClick,
   ishoverable,
   isselected,
+  onAdd,
 }) {
   return (
     <StyleSheetManager
@@ -44,7 +45,7 @@ export default function CardProduct({
                   className="primary-button"
                   content={"ajouter"}
                   version={"primaryOutlined"}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={onAdd}
                 >
                   ajouter
                 </Button>

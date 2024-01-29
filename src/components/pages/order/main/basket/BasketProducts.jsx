@@ -11,7 +11,7 @@ export default function BasketProducts({ basket }) {
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
-        <BasketCard {...basketProduct} />
+        <BasketCard {...basketProduct} key={basketProduct.id} />
       ))}
     </BasketProductsStyled>
   );
