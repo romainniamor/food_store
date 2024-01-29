@@ -11,7 +11,7 @@ import { useBasket } from "../../../hooks/useBasket";
 export default function OrderPage() {
   //states
 
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
