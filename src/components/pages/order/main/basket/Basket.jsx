@@ -5,6 +5,7 @@ import Total from "./Total";
 import { formatPrice } from "../../../../../utils/math";
 
 import EmptyBasket from "./EmptyBasket";
+import BasketProducts from "./BasketProducts";
 
 import { useContext } from "react";
 import orderContext from "../../../../../contexts/orderContext";
@@ -22,7 +23,7 @@ export default function Basket() {
       <Banner>
         <Total amoutToPay={formatPrice(0)} />
       </Banner>
-      {basket.length === 0 ? <EmptyBasket /> : <div>panier</div>}
+      {basket.length ? <BasketProducts basket={basket} /> : <EmptyBasket />}
       <Banner>
         <Footer />
       </Banner>
