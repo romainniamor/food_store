@@ -1,13 +1,13 @@
-export const EMPTY = []
+export const EMPTY = [];
 
 export const SMALL = [
   {
     id: "1",
-    title: "Burger Meal",
+    title: "Burger Meal Super Extra Large",
     imageSource: "images/burger1.png",
     quantity: 1,
   },
-]
+];
 
 export const MEDIUM = [
   {
@@ -26,7 +26,8 @@ export const MEDIUM = [
   },
   {
     id: "3",
-    imageSource: "https://www.ecomiam.com/images/Image/Frites-du-bistro-Code-Menlog.jpg",
+    imageSource:
+      "https://www.ecomiam.com/images/Image/Frites-du-bistro-Code-Menlog.jpg",
     title: "Burger House",
     price: 5,
     quantity: 4,
@@ -38,7 +39,7 @@ export const MEDIUM = [
     price: 5,
     quantity: 4,
   },
-]
+];
 
 export const LARGE = [
   {
@@ -98,7 +99,7 @@ export const LARGE = [
   {
     id: "7",
     imageSource: "/images/burger-bacon-egg.png",
-    title: "Burger Smoke Bdhbedhbeheb",
+    title: "Burger Smoke Bubble Crispy",
     price: 5.598,
     quantity: 1,
     isAvailable: true,
@@ -131,7 +132,7 @@ export const LARGE = [
     isAvailable: true,
     isAdvertised: false,
   },
-]
+];
 
 export const LARGE_WEIRD = [
   {
@@ -224,7 +225,7 @@ export const LARGE_WEIRD = [
     isAvailable: true,
     isAdvertised: false,
   },
-]
+];
 
 export const fakeBasket = {
   EMPTY,
@@ -232,4 +233,4 @@ export const fakeBasket = {
   MEDIUM,
   LARGE,
   LARGE_WEIRD,
-}
+};
