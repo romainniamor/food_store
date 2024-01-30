@@ -17,11 +17,19 @@ export default function Basket() {
 
   //comportements
 
+  const sumToPay = () => {
+    return basket.reduce((total, product) => {
+      //@todo => check formatPrice in utils in order to avoid manage error case here
+      if (isNaN(product.price)) return total;
+      return total + product.price * product.quantity;
+    }, 0);
+  };
+
   //render
   return (
     <BasketStyled>
       <Banner>
-        <Total amoutToPay={formatPrice(0)} />
+        <Total amoutToPay={formatPrice(sumToPay())} />
       </Banner>
       {basket.length ? <BasketProducts basket={basket} /> : <EmptyBasket />}
       <Banner>
