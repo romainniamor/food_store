@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { styled, css } from "styled-components";
 import { theme } from "../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 import { formatPrice } from "../../../../../utils/math";
@@ -105,11 +105,9 @@ const BasketCardStyled = styled.div`
     z-index: 1;
   }
 
-  /* hover de la card */
-  :hover {
+  &:hover {
     .delete-button {
       border: none;
-      box-sizing: border-box;
       position: absolute;
       top: 0;
       right: 0;
@@ -130,11 +128,11 @@ const BasketCardStyled = styled.div`
         height: ${theme.fonts.P3};
       }
 
-      :hover {
+      &:hover {
         .icon {
           color: ${theme.colors.dark};
         }
-        :active {
+        &:active {
           .icon {
             color: ${theme.colors.white};
           }
