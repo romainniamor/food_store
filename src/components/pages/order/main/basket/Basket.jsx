@@ -3,20 +3,35 @@ import Footer from "./Footer";
 import Banner from "./Banner";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/math";
-import BasketBody from "./BasketBody";
+
+import EmptyBasket from "./EmptyBasket";
+import BasketProducts from "./BasketProducts";
+
+import { useContext } from "react";
+import orderContext from "../../../../../contexts/orderContext";
 
 export default function Basket() {
   //state
 
+  const { basket } = useContext(orderContext);
+
   //comportements
+
+  const sumToPay = () => {
+    return basket.reduce((total, product) => {
+      //@todo => check formatPrice in utils in order to avoid manage error case here
+      if (isNaN(product.price)) return total;
+      return total + product.price * product.quantity;
+    }, 0);
+  };
 
   //render
   return (
     <BasketStyled>
       <Banner>
-        <Total amoutToPay={formatPrice(0)} />
+        <Total amoutToPay={formatPrice(sumToPay())} />
       </Banner>
-      <BasketBody />
+      {basket.length ? <BasketProducts basket={basket} /> : <EmptyBasket />}
       <Banner>
         <Footer />
       </Banner>
