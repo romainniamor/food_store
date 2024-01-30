@@ -12,27 +12,38 @@ export default function BasketCard({
   quantity,
   onDelete,
   isModeAdmin,
+  isSelected,
 }) {
   return (
-    <StyleSheetManager shouldForwardProp={(prop) => prop !== "isModeAdmin"}>
-      <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
-        <div className="delete-button" onClick={onDelete}>
-          <MdDeleteForever className="icon" />
-        </div>
-        <div className="image">
-          <img
-            src={imageSource ? imageSource : "/coming-soon.png"}
-            alt={title}
-          />
-        </div>
-        <div className="text-info">
-          <div className="left-info">
-            <div className="title">
-              <span>{title}</span>
-            </div>
-            <span className="price">{formatPrice(price)}</span>
+    <StyleSheetManager
+      shouldForwardProp={(prop) =>
+        prop !== "isModeAdmin" && prop !== "isSelected"
+      }
+    >
+      <BasketCardStyled
+        className={className}
+        isModeAdmin={isModeAdmin}
+        isSelected={isSelected}
+      >
+        <div className="card">
+          <div className="delete-button" onClick={onDelete}>
+            <MdDeleteForever className="icon" />
           </div>
-          <div className="quantity">x {quantity}</div>
+          <div className="image">
+            <img
+              src={imageSource ? imageSource : "/coming-soon.png"}
+              alt={title}
+            />
+          </div>
+          <div className="text-info">
+            <div className="left-info">
+              <div className="title">
+                <span>{title}</span>
+              </div>
+              <span className="price">{formatPrice(price)}</span>
+            </div>
+            <div className="quantity">x {quantity}</div>
+          </div>
         </div>
       </BasketCardStyled>
     </StyleSheetManager>
@@ -40,17 +51,19 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "default")};
-  height: 86px;
-  padding: 8px 16px;
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  border-radius: ${theme.borderRadius.round};
-  background: ${theme.colors.background_white};
-  box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.2);
+  .card {
+    cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "default")};
+    height: 86px;
+    padding: 8px 16px;
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    border-radius: ${theme.borderRadius.round};
+    background: ${theme.colors.background_white};
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.2);
 
-  position: relative;
-  margin: 20px 16px;
+    position: relative;
+    margin: 20px 16px;
+  }
 
   .image {
     height: 70px;
@@ -147,5 +160,16 @@ const BasketCardStyled = styled.div`
         }
       }
     }
+  }
+  ${({ isSelected }) => isSelected && selectedStyle}
+`;
+
+const selectedStyle = css`
+  .card {
+    background-color: ${theme.colors.primary};
+  }
+  .price,
+  .quantity {
+    color: ${theme.colors.white};
   }
 `;

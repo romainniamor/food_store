@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 import { fakeBasket } from "../fakeData/fakeBasket";
-import { deepClone, findInArray, filter } from "../utils/arrays";
+import {
+  deepClone,
+  findInArray,
+  removeObjectById,
+  findIndexInArray,
+} from "../utils/arrays";
 
 export const useBasket = () => {
   const [basket, setBasket] = useState(fakeBasket.EMPTY);
@@ -24,9 +29,11 @@ export const useBasket = () => {
     incrementQuantity();
 
     function incrementQuantity() {
-      const indexOfBasketProductToIncrement = basket.findIndex(
-        (product) => product.id === productToAdd.id
+      const indexOfBasketProductToIncrement = findIndexInArray(
+        basket,
+        productToAdd.id
       );
+
       //increment quantity ++
       basketCopy[indexOfBasketProductToIncrement].quantity++;
       //update state
@@ -37,9 +44,7 @@ export const useBasket = () => {
   const handleDeleteFromBasket = (idProducToRemove) => {
     const basketCopy = deepClone(basket);
 
-    const productSelect = basket.findIndex(
-      (product) => product.id === idProducToRemove
-    );
+    const productSelect = findIndexInArray(basket, idProducToRemove);
     let quantityToDecrease = basket[productSelect].quantity;
 
     if (quantityToDecrease > 1) {
@@ -49,7 +54,7 @@ export const useBasket = () => {
       return;
     }
     //update state
-    const basketUpdated = filter(basketCopy, idProducToRemove);
+    const basketUpdated = removeObjectById(basketCopy, idProducToRemove);
     setBasket(basketUpdated);
   };
 

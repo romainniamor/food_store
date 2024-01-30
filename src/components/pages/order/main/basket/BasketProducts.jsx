@@ -23,6 +23,7 @@ export default function BasketProducts({ basket }) {
           key={basketProduct.id}
           onDelete={() => handleDeleteButton(basketProduct.id)}
           isModeAdmin={isModeAdmin}
+          isSelected={true}
         />
       ))}
     </BasketProductsStyled>

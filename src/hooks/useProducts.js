@@ -1,4 +1,4 @@
-import { deepClone } from "./../utils/arrays";
+import { deepClone, removeObjectById } from "./../utils/arrays";
 import { useState } from "react";
 import { fakeMenu as menu } from "../fakeData/fakeMenu";
 
@@ -23,9 +23,7 @@ export const useProducts = () => {
     const productsCopy = deepClone(products);
 
     //manip du tableau
-    const productsUpdated = productsCopy.filter(
-      (product) => product.id !== idProduct
-    );
+    const productsUpdated = removeObjectById(productsCopy, idProduct);
 
     //maj state
     setProducts(productsUpdated);
