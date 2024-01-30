@@ -1,17 +1,29 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import BasketCard from "./BasketCard";
+import { useContext } from "react";
+import OrderContext from "../../../../../contexts/orderContext";
 
 export default function BasketProducts({ basket }) {
+  const { handleDeleteFromBasket, isModeAdmin } = useContext(OrderContext);
   //state
 
   //comportements
+
+  const handleDeleteButton = (id) => {
+    handleDeleteFromBasket(id);
+  };
 
   //affichage
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
-        <BasketCard {...basketProduct} key={basketProduct.id} />
+        <BasketCard
+          {...basketProduct}
+          key={basketProduct.id}
+          onDelete={() => handleDeleteButton(basketProduct.id)}
+          isModeAdmin={isModeAdmin}
+        />
       ))}
     </BasketProductsStyled>
   );

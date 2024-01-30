@@ -28,7 +28,7 @@ export default function OrderPage() {
     products,
   } = useProducts();
 
-  const { basket, handleAddToBasket } = useBasket();
+  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket();
 
   //contextValues
 
@@ -51,6 +51,7 @@ export default function OrderPage() {
     titleEditInputRef,
     basket,
     handleAddToBasket,
+    handleDeleteFromBasket,
   };
 
   //render

@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, css } from "styled-components";
+import { styled, css, StyleSheetManager } from "styled-components";
 import { theme } from "../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 import { formatPrice } from "../../../../../utils/math";
@@ -10,29 +10,37 @@ export default function BasketCard({
   title,
   price,
   quantity,
+  onDelete,
+  isModeAdmin,
 }) {
   return (
-    <BasketCardStyled className={className}>
-      <div className="delete-button">
-        <MdDeleteForever className="icon" />
-      </div>
-      <div className="image">
-        <img src={imageSource} alt={title} />
-      </div>
-      <div className="text-info">
-        <div className="left-info">
-          <div className="title">
-            <span>{title}</span>
-          </div>
-          <span className="price">{formatPrice(price)}</span>
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== "isModeAdmin"}>
+      <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
+        <div className="delete-button" onClick={onDelete}>
+          <MdDeleteForever className="icon" />
         </div>
-        <div className="quantity">x {quantity}</div>
-      </div>
-    </BasketCardStyled>
+        <div className="image">
+          <img
+            src={imageSource ? imageSource : "/coming-soon.png"}
+            alt={title}
+          />
+        </div>
+        <div className="text-info">
+          <div className="left-info">
+            <div className="title">
+              <span>{title}</span>
+            </div>
+            <span className="price">{formatPrice(price)}</span>
+          </div>
+          <div className="quantity">x {quantity}</div>
+        </div>
+      </BasketCardStyled>
+    </StyleSheetManager>
   );
 }
 
 const BasketCardStyled = styled.div`
+  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "default")};
   height: 86px;
   padding: 8px 16px;
   display: grid;
