@@ -51,8 +51,8 @@ export default function Menu() {
 
   const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation();
-    const productToAdd = findInArray(products, idProductToAdd);
-    handleAddToBasket(productToAdd);
+    // const productToAdd = findInArray(products, idProductToAdd);
+    handleAddToBasket(idProductToAdd);
   };
 
   //render

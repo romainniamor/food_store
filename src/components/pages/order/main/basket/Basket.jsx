@@ -9,19 +9,22 @@ import BasketProducts from "./BasketProducts";
 
 import { useContext } from "react";
 import orderContext from "../../../../../contexts/orderContext";
+import { findInArray } from "../../../../../utils/arrays";
 
 export default function Basket() {
   //state
 
-  const { basket } = useContext(orderContext);
+  const { basket, products } = useContext(orderContext);
 
   //comportements
 
   const sumToPay = () => {
     return basket.reduce((total, product) => {
+      //using products array to find data about product price
+      const productInMenu = findInArray(products, product.id);
       //@todo => check formatPrice in utils in order to avoid manage error case here
-      if (isNaN(product.price)) return total;
-      return total + product.price * product.quantity;
+      // if (isNaN(product.price)) return total;
+      return total + product.quantity * productInMenu.price;
     }, 0);
   };
 

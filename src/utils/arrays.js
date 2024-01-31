@@ -7,7 +7,7 @@ export const findInArray = (array, id) => {
 };
 
 export const findIndexInArray = (array, idWithUnknownIndex) => {
-  return array.findIndex((item) => idWithUnknownIndex === item.id);
+  return array.findIndex((item) => item.id === idWithUnknownIndex);
 };
 
 export const removeObjectById = (array, id) => {

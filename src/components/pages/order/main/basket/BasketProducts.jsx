@@ -3,9 +3,11 @@ import { theme } from "../../../../../theme";
 import BasketCard from "./BasketCard";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/orderContext";
+import { findInArray } from "../../../../../utils/arrays";
 
 export default function BasketProducts({ basket }) {
-  const { handleDeleteFromBasket, isModeAdmin } = useContext(OrderContext);
+  const { handleDeleteFromBasket, isModeAdmin, products } =
+    useContext(OrderContext);
   //state
 
   //comportements
@@ -17,15 +19,21 @@ export default function BasketProducts({ basket }) {
   //affichage
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => (
-        <BasketCard
-          {...basketProduct}
-          key={basketProduct.id}
-          onDelete={() => handleDeleteButton(basketProduct.id)}
-          isModeAdmin={isModeAdmin}
-          isSelected={true}
-        />
-      ))}
+      {basket.map((basketProduct) => {
+        const menuProduct = findInArray(products, basketProduct.id);
+        return (
+          <BasketCard
+            key={menuProduct.id}
+            title={menuProduct.title}
+            imageSource={menuProduct.imageSource}
+            quantity={basketProduct.quantity}
+            price={menuProduct.price}
+            onDelete={() => handleDeleteButton(menuProduct.id)}
+            isClickable={isModeAdmin}
+            isSelected={false}
+          />
+        );
+      })}
     </BasketProductsStyled>
   );
 }

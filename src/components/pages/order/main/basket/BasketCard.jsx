@@ -11,18 +11,18 @@ export default function BasketCard({
   price,
   quantity,
   onDelete,
-  isModeAdmin,
+  isClickable,
   isSelected,
 }) {
   return (
     <StyleSheetManager
       shouldForwardProp={(prop) =>
-        prop !== "isModeAdmin" && prop !== "isSelected"
+        prop !== "isClickable" && prop !== "isSelected"
       }
     >
       <BasketCardStyled
         className={className}
-        isModeAdmin={isModeAdmin}
+        isClickable={isClickable}
         isSelected={isSelected}
       >
         <div className="card">
@@ -52,7 +52,7 @@ export default function BasketCard({
 
 const BasketCardStyled = styled.div`
   .card {
-    cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "default")};
+    cursor: ${({ isClickable }) => (isClickable ? "pointer" : "default")};
     height: 86px;
     padding: 8px 16px;
     display: grid;
