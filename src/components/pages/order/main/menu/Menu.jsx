@@ -17,25 +17,20 @@ export default function Menu() {
     resetProducts,
     productSelected,
     setProductSelected,
-    setIsCollapsed,
-    setCurrentTabSelected,
-    titleEditInputRef,
     handleAddToBasket,
+    handleProductSelected,
+    handleDeleteBasketProductFromMenu,
   } = useContext(OrderContext);
 
   //state
 
   //comportements
 
-  const handleClick = async (id) => {
-    if (isModeAdmin) {
-      const productClickedOn = findInArray(products, id);
-      await setIsCollapsed(false);
-      await setCurrentTabSelected("edit");
-      await setProductSelected(productClickedOn);
-      titleEditInputRef.current.focus();
+  const handleClick = (id) => {
+    if (!isModeAdmin) {
+      return;
     }
-    return;
+    handleProductSelected(id);
   };
 
   const checkIfProductIsClick = (idProductInMenu, idProductClickOn) => {
@@ -45,14 +40,14 @@ export default function Menu() {
   const handleCardDelete = (e, id) => {
     e.stopPropagation();
     handleDeleteProduct(id);
+    handleDeleteBasketProductFromMenu(id);
     productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
-    titleEditInputRef.current.focus();
   };
 
   const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation();
-    const productToAdd = findInArray(products, idProductToAdd);
-    handleAddToBasket(productToAdd);
+    // const productToAdd = findInArray(products, idProductToAdd);
+    handleAddToBasket(idProductToAdd);
   };
 
   //render
@@ -75,8 +70,8 @@ export default function Menu() {
           hasDeleteButton={isModeAdmin}
           onDelete={(e) => handleCardDelete(e, product.id)}
           onClick={() => handleClick(product.id)}
-          ishoverable={isModeAdmin}
-          isselected={checkIfProductIsClick(productSelected.id, product.id)}
+          isHoverable={isModeAdmin}
+          isSelected={checkIfProductIsClick(productSelected.id, product.id)}
           onAdd={(e) => handleAddButton(e, product.id)}
         />
       ))}

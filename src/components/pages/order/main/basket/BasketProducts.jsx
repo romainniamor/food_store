@@ -3,28 +3,59 @@ import { theme } from "../../../../../theme";
 import BasketCard from "./BasketCard";
 import { useContext } from "react";
 import OrderContext from "../../../../../contexts/orderContext";
+import { findInArray } from "../../../../../utils/arrays";
 
 export default function BasketProducts({ basket }) {
-  const { handleDeleteFromBasket, isModeAdmin } = useContext(OrderContext);
+  const {
+    handleDeleteFromBasket,
+    isModeAdmin,
+    products,
+    handleProductSelected,
+    productSelected,
+  } = useContext(OrderContext);
   //state
 
   //comportements
 
-  const handleDeleteButton = (id) => {
+  const handleDeleteButton = (id, e) => {
+    e.stopPropagation();
     handleDeleteFromBasket(id);
+  };
+
+  const handleClick = (id) => {
+    if (!isModeAdmin) {
+      return;
+    }
+    handleProductSelected(id);
+  };
+
+  const checkIfProductIsClick = (idProductBasket, idProductClickOn) => {
+    if (!isModeAdmin) return false;
+    return idProductBasket === idProductClickOn;
   };
 
   //affichage
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => (
-        <BasketCard
-          {...basketProduct}
-          key={basketProduct.id}
-          onDelete={() => handleDeleteButton(basketProduct.id)}
-          isModeAdmin={isModeAdmin}
-        />
-      ))}
+      {basket.map((basketProduct) => {
+        const menuProduct = findInArray(products, basketProduct.id);
+        return (
+          <BasketCard
+            key={menuProduct.id}
+            title={menuProduct.title}
+            imageSource={menuProduct.imageSource}
+            quantity={basketProduct.quantity}
+            price={menuProduct.price}
+            onDelete={(e) => handleDeleteButton(menuProduct.id, e)}
+            isClickable={isModeAdmin}
+            isSelected={checkIfProductIsClick(
+              basketProduct.id,
+              productSelected.id
+            )}
+            onClick={() => handleClick(menuProduct.id)}
+          />
+        );
+      })}
     </BasketProductsStyled>
   );
 }

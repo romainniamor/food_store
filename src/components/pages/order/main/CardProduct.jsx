@@ -12,20 +12,20 @@ export default function CardProduct({
   hasDeleteButton,
   onDelete,
   onClick,
-  ishoverable,
-  isselected,
+  isHoverable,
+  isSelected,
   onAdd,
 }) {
   return (
     <StyleSheetManager
       shouldForwardProp={(prop) =>
-        prop !== "ishoverable" && prop !== "isselected"
+        prop !== "isHoverable" && prop !== "isSelected"
       }
     >
       <CardStyled
         onClick={onClick}
-        ishoverable={ishoverable}
-        isselected={isselected}
+        isHoverable={isHoverable}
+        isSelected={isSelected}
       >
         <div className="card">
           {hasDeleteButton && (
@@ -59,7 +59,7 @@ export default function CardProduct({
 }
 
 const CardStyled = styled.div`
-  ${({ ishoverable }) => ishoverable && hoverableStyle}
+  ${({ isHoverable }) => isHoverable && hoverableStyle}
   .card {
     position: relative;
     background: ${theme.colors.white};
@@ -142,8 +142,8 @@ const CardStyled = styled.div`
       }
     }
 
-    ${({ ishoverable, isselected }) =>
-      ishoverable && isselected && selectedStyle}
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && selectedStyle}
   }
 `;
 const hoverableStyle = css`

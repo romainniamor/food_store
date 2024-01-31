@@ -7,6 +7,7 @@ import { useState, useRef } from "react";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useProducts } from "../../../hooks/useProducts";
 import { useBasket } from "../../../hooks/useBasket";
+import { findInArray } from "../../../utils/arrays";
 
 export default function OrderPage() {
   //states
@@ -28,7 +29,20 @@ export default function OrderPage() {
     products,
   } = useProducts();
 
-  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket();
+  const {
+    basket,
+    handleAddToBasket,
+    handleDeleteFromBasket,
+    handleDeleteBasketProductFromMenu,
+  } = useBasket();
+
+  const handleProductSelected = async (id) => {
+    const productClickedOn = findInArray(products, id);
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    await setProductSelected(productClickedOn);
+    titleEditInputRef.current.focus();
+  };
 
   //contextValues
 
@@ -52,6 +66,8 @@ export default function OrderPage() {
     basket,
     handleAddToBasket,
     handleDeleteFromBasket,
+    handleDeleteBasketProductFromMenu,
+    handleProductSelected,
   };
 
   //render
