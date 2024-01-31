@@ -19,6 +19,7 @@ export default function Menu() {
     setProductSelected,
     handleAddToBasket,
     handleProductSelected,
+    handleDeleteBasketProductFromMenu,
   } = useContext(OrderContext);
 
   //state
@@ -39,6 +40,7 @@ export default function Menu() {
   const handleCardDelete = (e, id) => {
     e.stopPropagation();
     handleDeleteProduct(id);
+    handleDeleteBasketProductFromMenu(id);
     productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
   };
 

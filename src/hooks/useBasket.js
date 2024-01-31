@@ -61,9 +61,17 @@ export const useBasket = () => {
     setBasket(basketUpdated);
   };
 
+  const handleDeleteBasketProductFromMenu = (idProductToDelete) => {
+    const basketCopy = deepClone(basket);
+    //update state
+    const basketUpdated = removeObjectById(basketCopy, idProductToDelete);
+    setBasket(basketUpdated);
+  };
+
   return {
     basket,
     handleAddToBasket,
     handleDeleteFromBasket,
+    handleDeleteBasketProductFromMenu,
   };
 };

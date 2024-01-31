@@ -29,7 +29,12 @@ export default function OrderPage() {
     products,
   } = useProducts();
 
-  const { basket, handleAddToBasket, handleDeleteFromBasket } = useBasket();
+  const {
+    basket,
+    handleAddToBasket,
+    handleDeleteFromBasket,
+    handleDeleteBasketProductFromMenu,
+  } = useBasket();
 
   const handleProductSelected = async (id) => {
     const productClickedOn = findInArray(products, id);
@@ -61,6 +66,7 @@ export default function OrderPage() {
     basket,
     handleAddToBasket,
     handleDeleteFromBasket,
+    handleDeleteBasketProductFromMenu,
     handleProductSelected,
   };
 
