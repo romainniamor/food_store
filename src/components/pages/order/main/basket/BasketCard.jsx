@@ -13,6 +13,7 @@ export default function BasketCard({
   onDelete,
   isClickable,
   isSelected,
+  onClick,
 }) {
   return (
     <StyleSheetManager
@@ -24,6 +25,7 @@ export default function BasketCard({
         className={className}
         isClickable={isClickable}
         isSelected={isSelected}
+        onClick={onClick}
       >
         <div className="card">
           <div className="delete-button" onClick={onDelete}>

@@ -6,14 +6,26 @@ import OrderContext from "../../../../../contexts/orderContext";
 import { findInArray } from "../../../../../utils/arrays";
 
 export default function BasketProducts({ basket }) {
-  const { handleDeleteFromBasket, isModeAdmin, products } =
-    useContext(OrderContext);
+  const {
+    handleDeleteFromBasket,
+    isModeAdmin,
+    products,
+    handleProductSelected,
+  } = useContext(OrderContext);
   //state
 
   //comportements
 
-  const handleDeleteButton = (id) => {
+  const handleDeleteButton = (id, e) => {
+    e.stopPropagation();
     handleDeleteFromBasket(id);
+  };
+
+  const handleClick = (id) => {
+    if (!isModeAdmin) {
+      return;
+    }
+    handleProductSelected(id);
   };
 
   //affichage
@@ -28,9 +40,10 @@ export default function BasketProducts({ basket }) {
             imageSource={menuProduct.imageSource}
             quantity={basketProduct.quantity}
             price={menuProduct.price}
-            onDelete={() => handleDeleteButton(menuProduct.id)}
+            onDelete={(e) => handleDeleteButton(menuProduct.id, e)}
             isClickable={isModeAdmin}
             isSelected={false}
+            onClick={() => handleClick(menuProduct.id)}
           />
         );
       })}

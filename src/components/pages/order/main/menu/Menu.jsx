@@ -17,25 +17,19 @@ export default function Menu() {
     resetProducts,
     productSelected,
     setProductSelected,
-    setIsCollapsed,
-    setCurrentTabSelected,
-    titleEditInputRef,
     handleAddToBasket,
+    handleProductSelected,
   } = useContext(OrderContext);
 
   //state
 
   //comportements
 
-  const handleClick = async (id) => {
-    if (isModeAdmin) {
-      const productClickedOn = findInArray(products, id);
-      await setIsCollapsed(false);
-      await setCurrentTabSelected("edit");
-      await setProductSelected(productClickedOn);
-      titleEditInputRef.current.focus();
+  const handleClick = (id) => {
+    if (!isModeAdmin) {
+      return;
     }
-    return;
+    handleProductSelected(id);
   };
 
   const checkIfProductIsClick = (idProductInMenu, idProductClickOn) => {
@@ -46,7 +40,6 @@ export default function Menu() {
     e.stopPropagation();
     handleDeleteProduct(id);
     productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
-    titleEditInputRef.current.focus();
   };
 
   const handleAddButton = (e, idProductToAdd) => {
