@@ -23,7 +23,7 @@ export default function Basket() {
       //using products array to find data about product price
       const productInMenu = findInArray(products, product.id);
       //@todo => check formatPrice in utils in order to avoid manage error case here
-      // if (isNaN(product.price)) return total;
+      if (isNaN(product.price)) return total;
       return total + product.quantity * productInMenu.price;
     }, 0);
   };

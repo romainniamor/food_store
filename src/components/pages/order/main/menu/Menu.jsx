@@ -68,8 +68,8 @@ export default function Menu() {
           hasDeleteButton={isModeAdmin}
           onDelete={(e) => handleCardDelete(e, product.id)}
           onClick={() => handleClick(product.id)}
-          ishoverable={isModeAdmin}
-          isselected={checkIfProductIsClick(productSelected.id, product.id)}
+          isHoverable={isModeAdmin}
+          isSelected={checkIfProductIsClick(productSelected.id, product.id)}
           onAdd={(e) => handleAddButton(e, product.id)}
         />
       ))}

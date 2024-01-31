@@ -11,6 +11,7 @@ export default function BasketProducts({ basket }) {
     isModeAdmin,
     products,
     handleProductSelected,
+    productSelected,
   } = useContext(OrderContext);
   //state
 
@@ -28,6 +29,11 @@ export default function BasketProducts({ basket }) {
     handleProductSelected(id);
   };
 
+  const checkIfProductIsClick = (idProductBasket, idProductClickOn) => {
+    if (!isModeAdmin) return false;
+    return idProductBasket === idProductClickOn;
+  };
+
   //affichage
   return (
     <BasketProductsStyled>
@@ -42,7 +48,10 @@ export default function BasketProducts({ basket }) {
             price={menuProduct.price}
             onDelete={(e) => handleDeleteButton(menuProduct.id, e)}
             isClickable={isModeAdmin}
-            isSelected={false}
+            isSelected={checkIfProductIsClick(
+              basketProduct.id,
+              productSelected.id
+            )}
             onClick={() => handleClick(menuProduct.id)}
           />
         );
