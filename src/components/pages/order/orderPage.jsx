@@ -3,12 +3,13 @@ import styled from "styled-components";
 import NavBar from "./navBar/NavBar";
 import Main from "./main/Main";
 import OrderContext from "../../../contexts/orderContext";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useProducts } from "../../../hooks/useProducts";
 import { useBasket } from "../../../hooks/useBasket";
 import { findInArray } from "../../../utils/arrays";
 import { useParams } from "react-router-dom";
+import { getUserProducts } from "../../../api/product";
 
 export default function OrderPage() {
   //states
@@ -28,6 +29,7 @@ export default function OrderPage() {
     handleEditProduct,
     resetProducts,
     products,
+    setProducts,
   } = useProducts();
 
   const {
@@ -44,6 +46,15 @@ export default function OrderPage() {
     await setProductSelected(productClickedOn);
     titleEditInputRef.current.focus();
   };
+
+  const initializeProducts = async () => {
+    const dataProducts = await getUserProducts(userName);
+    console.log("products", dataProducts);
+    setProducts(dataProducts);
+  };
+  useEffect(() => {
+    initializeProducts();
+  }, []);
 
   //contextValues
 

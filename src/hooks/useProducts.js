@@ -51,6 +51,7 @@ export const useProducts = () => {
 
   return {
     products,
+    setProducts,
     handleAddProduct,
     handleDeleteProduct,
     handleEditProduct,
