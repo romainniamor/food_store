@@ -8,10 +8,11 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useProducts } from "../../../hooks/useProducts";
 import { useBasket } from "../../../hooks/useBasket";
 import { findInArray } from "../../../utils/arrays";
+import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
   //states
-
+  const { userName } = useParams();
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
@@ -47,6 +48,7 @@ export default function OrderPage() {
   //contextValues
 
   const orderContextValue = {
+    userName,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,

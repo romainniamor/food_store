@@ -9,7 +9,7 @@ import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
   //state
-  const { handleAddProduct, newProduct, setNewProduct } =
+  const { handleAddProduct, newProduct, setNewProduct, userName } =
     useContext(OrderContext);
   const { isSubmited, displaySuccessMessage } = useSuccessMessage(3000); //custom hook
 
@@ -22,7 +22,7 @@ export default function AddForm() {
       id: crypto.randomUUID(),
       ...newProduct,
     };
-    handleAddProduct(newProductToAdd);
+    handleAddProduct(newProductToAdd, userName);
     setNewProduct(EMPTY_PRODUCT);
     displaySuccessMessage();
   };

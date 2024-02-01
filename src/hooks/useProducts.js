@@ -1,13 +1,14 @@
 import { deepClone, removeObjectById } from "./../utils/arrays";
 import { useState } from "react";
 import { fakeMenu as menu } from "../fakeData/fakeMenu";
+import { syncMenus } from "../api/product";
 
 export const useProducts = () => {
   //state
   const [products, setProducts] = useState(menu.MEDIUM);
 
   //comportements CRUD
-  const handleAddProduct = (newProduct) => {
+  const handleAddProduct = (newProduct, userName) => {
     //copie du array
     const productsCopy = deepClone(products);
 
@@ -16,6 +17,7 @@ export const useProducts = () => {
 
     //update du state
     setProducts(productsUpdated);
+    syncMenus(userName, productsUpdated);
   };
 
   const handleDeleteProduct = (idProduct) => {
