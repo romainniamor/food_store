@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { theme } from "../../../theme/index";
 import styled from "styled-components";
 import TextInput from "../../reusableUi/TextInput";
+import WelcomeMessage from "./WelcomeMessage";
 import { FaChevronCircleRight } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
 import Button from "../../reusableUi/Button";
+import { authenticateUser } from "../../../api/user";
 
 export default function LoginForm() {
   //state
@@ -16,18 +18,17 @@ export default function LoginForm() {
   const naviagte = useNavigate();
 
   //comportements
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const result = await authenticateUser(userName);
     setUserName("");
-    naviagte(`order/${userName}`);
+    naviagte(`order/${result.username}`);
   };
 
   //render
   return (
     <LoginFormStyled>
-      <h1>Bienvenue chez nous ! </h1>
-      <hr />
-      <h2>Connectez-vous</h2>
+      <WelcomeMessage />
       <form onSubmit={handleSubmit}>
         <TextInput
           Icon={<BsPersonCircle className="login-icon" />}
@@ -58,23 +59,6 @@ const LoginFormStyled = styled.div`
   max-width: 464px;
   min-width: 400px;
   padding: 2.5rem 2rem;
-
-  h1 {
-    font-size: ${theme.fonts.P6};
-  }
-
-  hr {
-    width: 100%;
-    height: 3px;
-    background: ${theme.colors.primary};
-    border: none;
-  }
-
-  h2 {
-    font-size: ${theme.fonts.P4};
-    font-weight: ${theme.weights.bold};
-    margin: 20px 0px 0;
-  }
 
   form {
     display: flex;
