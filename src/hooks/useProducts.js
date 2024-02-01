@@ -20,7 +20,7 @@ export const useProducts = () => {
     syncMenus(userName, productsUpdated);
   };
 
-  const handleDeleteProduct = (idProduct) => {
+  const handleDeleteProduct = (idProduct, userName) => {
     //copy
     const productsCopy = deepClone(products);
 
@@ -29,6 +29,7 @@ export const useProducts = () => {
 
     //maj state
     setProducts(productsUpdated);
+    syncMenus(userName, productsUpdated);
   };
 
   const handleEditProduct = (productBeingEdited) => {

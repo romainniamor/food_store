@@ -5,13 +5,13 @@ import OrderContext from "../../../../../contexts/orderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
-import { findInArray } from "../../../../../utils/arrays";
 import Loading from "./Loading";
 
 const DEFAULT_IMG = "/coming-soon.png";
 
 export default function Menu() {
   const {
+    userName,
     products,
     isModeAdmin,
     handleDeleteProduct,
@@ -40,7 +40,7 @@ export default function Menu() {
 
   const handleCardDelete = (e, id) => {
     e.stopPropagation();
-    handleDeleteProduct(id);
+    handleDeleteProduct(id, userName);
     handleDeleteBasketProductFromMenu(id);
     productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
   };
