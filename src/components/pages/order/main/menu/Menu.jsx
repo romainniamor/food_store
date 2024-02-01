@@ -6,6 +6,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import { findInArray } from "../../../../../utils/arrays";
+import Loading from "./Loading";
 
 const DEFAULT_IMG = "/coming-soon.png";
 
@@ -51,6 +52,10 @@ export default function Menu() {
   };
 
   //render
+
+  if (products === undefined) {
+    return <Loading />;
+  }
 
   if (products.length === 0) {
     if (isModeAdmin) {

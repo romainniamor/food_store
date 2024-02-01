@@ -5,7 +5,7 @@ import { syncMenus } from "../api/product";
 
 export const useProducts = () => {
   //state
-  const [products, setProducts] = useState(menu.MEDIUM);
+  const [products, setProducts] = useState();
 
   //comportements CRUD
   const handleAddProduct = (newProduct, userName) => {
