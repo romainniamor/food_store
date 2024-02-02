@@ -5,8 +5,8 @@ import { theme } from "../../../../../theme";
 export default function EmptyMenuAdmin({ onClick }) {
   return (
     <EmptyMenuAdminStyled>
-      <span>le menu est vide ?</span>
-      <span>cliquez ci-dessous pour le reinitialiser</span>
+      <span className="message">le menu est vide ?</span>
+      <span className="message">cliquez ci-dessous pour le reinitialiser</span>
       <Button
         onClick={onClick}
         content={"Générer de nouveaux produits"}
@@ -27,7 +27,7 @@ const EmptyMenuAdminStyled = styled.div`
     font-weight: ${theme.weights.bold};
   }
 
-  span {
+  .message {
     font-weight: ${theme.weights.regular};
     text-transform: uppercase;
     font-family: "Amatic SC", sans-serif;

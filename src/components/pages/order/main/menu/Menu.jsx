@@ -59,7 +59,7 @@ export default function Menu() {
 
   if (products.length === 0) {
     if (isModeAdmin) {
-      return <EmptyMenuAdmin onClick={resetProducts} />;
+      return <EmptyMenuAdmin onClick={() => resetProducts(userName)} />;
     }
     return <EmptyMenuClient />;
   }

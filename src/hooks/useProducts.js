@@ -46,8 +46,9 @@ export const useProducts = () => {
     setProducts(productsCopy);
   };
 
-  const resetProducts = () => {
-    setProducts(menu.MEDIUM);
+  const resetProducts = (userName) => {
+    setProducts(menu.SMALL);
+    syncMenus(userName, menu.SMALL);
   };
 
   return {
