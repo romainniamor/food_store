@@ -60,6 +60,7 @@ export default function OrderPage() {
   const initializeBasket = () => {
     const dataBasket = getLocalStorage(userName);
     console.log("basket", dataBasket);
+    if (!dataBasket) return;
     setBasket(dataBasket);
   };
 
