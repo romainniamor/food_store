@@ -28,15 +28,17 @@ export default function Basket() {
     }, 0);
   };
 
-  if (products === undefined) return <span>chargement</span>;
-
   //render
   return (
     <BasketStyled>
       <Banner>
         <Total amoutToPay={formatPrice(sumToPay())} />
       </Banner>
-      {basket.length ? <BasketProducts basket={basket} /> : <EmptyBasket />}
+      {basket.length ? (
+        <BasketProducts basket={basket} />
+      ) : (
+        <EmptyBasket isLoading={products === undefined} />
+      )}
       <Banner>
         <Footer />
       </Banner>
