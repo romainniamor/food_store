@@ -9,7 +9,7 @@ import {
 } from "../utils/arrays";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [basket, setBasket] = useState([]);
 
   const handleAddToBasket = (idProductToAdd, userName) => {
     //copy state
@@ -79,6 +79,7 @@ export const useBasket = () => {
 
   return {
     basket,
+    setBasket,
     handleAddToBasket,
     handleDeleteFromBasket,
     handleDeleteBasketProductFromMenu,

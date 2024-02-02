@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket";
 import { findInArray } from "../../../utils/arrays";
 import { useParams } from "react-router-dom";
 import { getUserProducts } from "../../../api/product";
+import { getLocalStorage } from "../../../utils/window";
 
 export default function OrderPage() {
   //states
@@ -34,6 +35,7 @@ export default function OrderPage() {
 
   const {
     basket,
+    setBasket,
     handleAddToBasket,
     handleDeleteFromBasket,
     handleDeleteBasketProductFromMenu,
@@ -53,6 +55,16 @@ export default function OrderPage() {
   };
   useEffect(() => {
     initializeProducts();
+  }, []);
+
+  const initializeBasket = () => {
+    const dataBasket = getLocalStorage(userName);
+    console.log("basket", dataBasket);
+    setBasket(dataBasket);
+  };
+
+  useEffect(() => {
+    initializeBasket();
   }, []);
 
   //contextValues

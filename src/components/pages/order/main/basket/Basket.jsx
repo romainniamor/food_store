@@ -28,6 +28,8 @@ export default function Basket() {
     }, 0);
   };
 
+  if (products === undefined) return <span>chargement</span>;
+
   //render
   return (
     <BasketStyled>
