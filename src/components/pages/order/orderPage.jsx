@@ -49,7 +49,6 @@ export default function OrderPage() {
 
   const initializeProducts = async () => {
     const dataProducts = await getUserProducts(userName);
-    console.log("products", dataProducts);
     setProducts(dataProducts);
   };
   useEffect(() => {
