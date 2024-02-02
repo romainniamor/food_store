@@ -8,6 +8,7 @@ import InfoEditForm from "./InfoEditForm";
 export default function EditForm() {
   //state
   const {
+    userName,
     productSelected,
     setProductSelected,
     handleEditProduct,
@@ -19,7 +20,7 @@ export default function EditForm() {
     const { value, name } = e.target;
     const productBeingUpdated = { ...productSelected, [name]: value }; //dynamic property name
     setProductSelected(productBeingUpdated); //update form
-    handleEditProduct(productBeingUpdated); // update menu
+    handleEditProduct(productBeingUpdated, userName); // update menu local & database
   };
 
   //render

@@ -32,7 +32,7 @@ export const useProducts = () => {
     syncMenus(userName, productsUpdated);
   };
 
-  const handleEditProduct = (productBeingEdited) => {
+  const handleEditProduct = (productBeingEdited, userName) => {
     //copie du state
     const productsCopy = deepClone(products);
     //manip du state
@@ -44,6 +44,7 @@ export const useProducts = () => {
 
     //update du state
     setProducts(productsCopy);
+    syncMenus(userName, productsCopy);
   };
 
   const resetProducts = (userName) => {
