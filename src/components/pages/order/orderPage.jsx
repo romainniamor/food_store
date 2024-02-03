@@ -9,8 +9,7 @@ import { useProducts } from "../../../hooks/useProducts";
 import { useBasket } from "../../../hooks/useBasket";
 import { findInArray } from "../../../utils/arrays";
 import { useParams } from "react-router-dom";
-import { getUserProducts } from "../../../api/product";
-import { getLocalStorage } from "../../../utils/window";
+import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 export default function OrderPage() {
   //states
@@ -49,25 +48,9 @@ export default function OrderPage() {
     titleEditInputRef.current.focus();
   };
 
-  const initializeProducts = async () => {
-    const dataProducts = await getUserProducts(userName);
-    setProducts(dataProducts);
-  };
-
-  const initializeBasket = () => {
-    const dataBasket = getLocalStorage(userName);
-    console.log("basket", dataBasket);
-    if (!dataBasket) return;
-    setBasket(dataBasket);
-  };
-
-  const initialiseUserSession = async () => {
-    await initializeProducts();
-    initializeBasket();
-  };
-
+  //initialisation des data products and basket
   useEffect(() => {
-    initialiseUserSession();
+    initialiseUserSession(userName, setProducts, setBasket);
   }, []);
 
   //contextValues
