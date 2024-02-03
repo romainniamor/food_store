@@ -5,12 +5,13 @@ import OrderContext from "../../../../../contexts/orderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
-import { findInArray } from "../../../../../utils/arrays";
+import Loading from "./Loading";
 
 const DEFAULT_IMG = "/coming-soon.png";
 
 export default function Menu() {
   const {
+    userName,
     products,
     isModeAdmin,
     handleDeleteProduct,
@@ -39,22 +40,26 @@ export default function Menu() {
 
   const handleCardDelete = (e, id) => {
     e.stopPropagation();
-    handleDeleteProduct(id);
-    handleDeleteBasketProductFromMenu(id);
+    handleDeleteProduct(id, userName);
+    handleDeleteBasketProductFromMenu(id, userName);
     productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
   };
 
   const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation();
     // const productToAdd = findInArray(products, idProductToAdd);
-    handleAddToBasket(idProductToAdd);
+    handleAddToBasket(idProductToAdd, userName);
   };
 
   //render
 
+  if (products === undefined) {
+    return <Loading />;
+  }
+
   if (products.length === 0) {
     if (isModeAdmin) {
-      return <EmptyMenuAdmin onClick={resetProducts} />;
+      return <EmptyMenuAdmin onClick={() => resetProducts(userName)} />;
     }
     return <EmptyMenuClient />;
   }
@@ -82,7 +87,7 @@ export default function Menu() {
 const MenuStyled = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-items: center;
   grid-row-gap: 60px;
   overflow-y: scroll;

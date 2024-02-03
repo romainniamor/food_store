@@ -34,7 +34,11 @@ export default function Basket() {
       <Banner>
         <Total amoutToPay={formatPrice(sumToPay())} />
       </Banner>
-      {basket.length ? <BasketProducts basket={basket} /> : <EmptyBasket />}
+      {basket.length ? (
+        <BasketProducts basket={basket} />
+      ) : (
+        <EmptyBasket isLoading={products === undefined} />
+      )}
       <Banner>
         <Footer />
       </Banner>

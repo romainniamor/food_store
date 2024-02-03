@@ -8,7 +8,10 @@ import { getInputTextConfig } from "./inputTextConfig";
 import React from "react";
 
 const AdminForm = React.forwardRef(
-  ({ onSubmit, onChange, product, version, children }, ref) => {
+  (
+    { onSubmit, onChange, product, version, children, onFocus, onBlur },
+    ref
+  ) => {
     //state
 
     //comportements
@@ -26,6 +29,8 @@ const AdminForm = React.forwardRef(
               key={inputText.id}
               onChange={onChange}
               version={version}
+              onFocus={onFocus}
+              onBlur={onBlur}
               ref={ref && inputText.name === "title" ? ref : null}
             />
           ))}

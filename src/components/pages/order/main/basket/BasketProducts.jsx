@@ -7,6 +7,7 @@ import { findInArray } from "../../../../../utils/arrays";
 
 export default function BasketProducts({ basket }) {
   const {
+    userName,
     handleDeleteFromBasket,
     isModeAdmin,
     products,
@@ -19,7 +20,7 @@ export default function BasketProducts({ basket }) {
 
   const handleDeleteButton = (id, e) => {
     e.stopPropagation();
-    handleDeleteFromBasket(id);
+    handleDeleteFromBasket(id, userName);
   };
 
   const handleClick = (id) => {

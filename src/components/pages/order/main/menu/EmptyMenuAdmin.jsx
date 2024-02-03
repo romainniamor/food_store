@@ -5,8 +5,8 @@ import { theme } from "../../../../../theme";
 export default function EmptyMenuAdmin({ onClick }) {
   return (
     <EmptyMenuAdminStyled>
-      <h1>le menu est vide ?</h1>
-      <h2>cliquez ci-dessous pour le reinitialiser</h2>
+      <span className="message">le menu est vide ?</span>
+      <span className="message">cliquez ci-dessous pour le reinitialiser</span>
       <Button
         onClick={onClick}
         content={"Générer de nouveaux produits"}
@@ -23,16 +23,12 @@ const EmptyMenuAdminStyled = styled.div`
   align-items: center;
   gap: 21px;
 
-  h1 {
+  span:nth-child(1) {
     font-weight: ${theme.weights.bold};
   }
 
-  h2 {
+  .message {
     font-weight: ${theme.weights.regular};
-  }
-
-  h2,
-  h1 {
     text-transform: uppercase;
     font-family: "Amatic SC", sans-serif;
     color: ${theme.colors.greyBlue};

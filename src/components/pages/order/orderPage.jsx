@@ -3,16 +3,18 @@ import styled from "styled-components";
 import NavBar from "./navBar/NavBar";
 import Main from "./main/Main";
 import OrderContext from "../../../contexts/orderContext";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useProducts } from "../../../hooks/useProducts";
 import { useBasket } from "../../../hooks/useBasket";
 import { findInArray } from "../../../utils/arrays";
+import { useParams } from "react-router-dom";
+import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 export default function OrderPage() {
   //states
-
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const { userName } = useParams();
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -27,10 +29,12 @@ export default function OrderPage() {
     handleEditProduct,
     resetProducts,
     products,
+    setProducts,
   } = useProducts();
 
   const {
     basket,
+    setBasket,
     handleAddToBasket,
     handleDeleteFromBasket,
     handleDeleteBasketProductFromMenu,
@@ -44,9 +48,15 @@ export default function OrderPage() {
     titleEditInputRef.current.focus();
   };
 
+  //initialisation des data products and basket
+  useEffect(() => {
+    initialiseUserSession(userName, setProducts, setBasket);
+  }, []);
+
   //contextValues
 
   const orderContextValue = {
+    userName,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
