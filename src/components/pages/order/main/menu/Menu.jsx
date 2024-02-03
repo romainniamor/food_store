@@ -41,7 +41,7 @@ export default function Menu() {
   const handleCardDelete = (e, id) => {
     e.stopPropagation();
     handleDeleteProduct(id, userName);
-    handleDeleteBasketProductFromMenu(id);
+    handleDeleteBasketProductFromMenu(id, userName);
     productSelected.id === id && setProductSelected(EMPTY_PRODUCT);
   };
 
@@ -87,7 +87,7 @@ export default function Menu() {
 const MenuStyled = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-items: center;
   grid-row-gap: 60px;
   overflow-y: scroll;

@@ -53,9 +53,6 @@ export default function OrderPage() {
     const dataProducts = await getUserProducts(userName);
     setProducts(dataProducts);
   };
-  useEffect(() => {
-    initializeProducts();
-  }, []);
 
   const initializeBasket = () => {
     const dataBasket = getLocalStorage(userName);
@@ -64,8 +61,13 @@ export default function OrderPage() {
     setBasket(dataBasket);
   };
 
-  useEffect(() => {
+  const initialiseUserSession = async () => {
+    await initializeProducts();
     initializeBasket();
+  };
+
+  useEffect(() => {
+    initialiseUserSession();
   }, []);
 
   //contextValues

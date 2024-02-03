@@ -21,7 +21,7 @@ export const useBasket = () => {
       incrementQuantityOfProduct(idProductToAdd, basketCopy, userName);
       return;
     }
-    createNewProductInBasket(idProductToAdd, basketCopy, setBasket);
+    createNewProductInBasket(idProductToAdd, basketCopy, setBasket, userName);
   };
 
   const incrementQuantityOfProduct = (idProductToAdd, basketCopy, userName) => {
@@ -61,6 +61,7 @@ export const useBasket = () => {
       //decrement quantit --
       basketCopy[productSelect].quantity--;
       setBasket(basketCopy);
+      setLocalStorage(userName, basketCopy);
       return;
     }
     //update state

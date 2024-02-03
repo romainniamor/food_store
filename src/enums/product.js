@@ -5,3 +5,8 @@ export const EMPTY_PRODUCT = Object.freeze({
   imageSource: "",
   price: "",
 });
+
+export const BASKET_MESSAGE = {
+  EMPTY: "votre commande est vide",
+  LOADING: "chargement ...",
+};

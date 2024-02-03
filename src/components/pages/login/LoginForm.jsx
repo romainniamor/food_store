@@ -22,7 +22,7 @@ export default function LoginForm() {
     event.preventDefault();
     const result = await authenticateUser(userName);
     setUserName("");
-    naviagte(`order/${result.username}`);
+    naviagte(`order/${userName}`);
   };
 
   //render
