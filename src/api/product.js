@@ -19,5 +19,5 @@ export const getUserProducts = async (userId) => {
     const { menu } = docSnapshot.data();
     return menu;
   }
-  return menu.SMALL;
+  return menu.LARGE;
 };

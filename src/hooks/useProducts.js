@@ -48,8 +48,8 @@ export const useProducts = () => {
   };
 
   const resetProducts = (userName) => {
-    setProducts(menu.SMALL);
-    syncMenus(userName, menu.SMALL);
+    setProducts(menu.LARGE);
+    syncMenus(userName, menu.LARGE);
   };
 
   return {

@@ -15,7 +15,7 @@ const createUser = (userId) => {
   const docRef = doc(db, "users", userId); //chemin
   const data = {
     username: userId,
-    menu: menu.SMALL, //des données
+    menu: menu.LARGE, //des données
   };
   setDoc(docRef, data);
 };
