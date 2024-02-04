@@ -101,11 +101,6 @@ const BasketProductsStyled = styled.div`
   }
 
   .basketCards-exit {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  .basketCards-exit {
     transform: translateX(-100px);
     opacity: 0;
     transition: all 0.5s ease-in-out;
