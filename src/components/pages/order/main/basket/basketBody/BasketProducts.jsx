@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
+import { theme } from "../../../../../../theme";
 import BasketCard from "./BasketCard";
 import { useContext } from "react";
-import OrderContext from "../../../../../contexts/orderContext";
-import { findInArray } from "../../../../../utils/arrays";
+import OrderContext from "../../../../../../contexts/orderContext";
+import { findInArray } from "../../../../../../utils/arrays";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { basketCardsAnimation } from "../../../../../theme/animations";
+import { basketCardsAnimation } from "../../../../../../theme/animations";
 
 export default function BasketProducts({ basket }) {
   const {

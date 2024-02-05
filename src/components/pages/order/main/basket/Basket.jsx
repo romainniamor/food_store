@@ -4,9 +4,7 @@ import Banner from "./Banner";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/math";
 
-import EmptyBasket from "./EmptyBasket";
-import BasketProducts from "./BasketProducts";
-
+import BasketBody from "./basketBody/BasketBody";
 import { useContext } from "react";
 import orderContext from "../../../../../contexts/orderContext";
 import { findInArray } from "../../../../../utils/arrays";
@@ -34,11 +32,7 @@ export default function Basket() {
       <Banner>
         <Total amoutToPay={formatPrice(sumToPay())} />
       </Banner>
-      {basket.length ? (
-        <BasketProducts basket={basket} />
-      ) : (
-        <EmptyBasket isLoading={products === undefined} />
-      )}
+      <BasketBody />
       <Banner>
         <Footer />
       </Banner>

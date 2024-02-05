@@ -1,9 +1,9 @@
 import React from "react";
 import { styled, css, StyleSheetManager } from "styled-components";
-import { theme } from "../../../../../theme";
+import { theme } from "../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
-import { formatPrice } from "../../../../../utils/math";
-import CasinoEffect from "../../../../reusableUi/casinoEffect";
+import { formatPrice } from "../../../../../../utils/math";
+import CasinoEffect from "../../../../../reusableUi/casinoEffect";
 
 export default function BasketCard({
   className,
