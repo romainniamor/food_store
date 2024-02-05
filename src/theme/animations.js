@@ -7,7 +7,7 @@ export const adminAnimation = css`
 
   .admin-appear-active {
     transform: translateY(0%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
 `;
 
@@ -20,7 +20,7 @@ export const basketCardsAnimation = css`
   .basketCards-appear-active {
     transform: translateX(0px);
     opacity: 1;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   .basketCards-enter {
@@ -31,13 +31,13 @@ export const basketCardsAnimation = css`
   .basketCards-enter-active {
     transform: translateX(0);
     opacity: 1;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   .basketCards-exit {
     transform: translateX(-100px);
     opacity: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 `;
 
@@ -49,4 +49,20 @@ from {
 to {
     transform: scale(1);
 }
+`;
+
+export const menuCardsAnimation = css`
+  .menu-cards-enter {
+    transform: translateX(-100px);
+  }
+
+  .menu-cards-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms;
+  }
+
+  .menu-cards-exit-active {
+    scale: 0;
+    transition: scale 300ms;
+  }
 `;

@@ -83,7 +83,7 @@ const CardStyled = styled.div`
       border: none;
       cursor: pointer;
       font-size: 30px;
-      animation: ${scaleUpElement} 0.5s ease-in-out;
+      animation: ${scaleUpElement} 0.3s ease-in-out;
       &:hover {
         color: ${theme.colors.red};
       }

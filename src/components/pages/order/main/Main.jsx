@@ -20,7 +20,7 @@ export default function Main() {
           <TransitionGroup>
             <CSSTransition
               classNames="admin"
-              timeout={500}
+              timeout={300}
               key={isModeAdmin}
               appear={true}
             >

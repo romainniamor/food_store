@@ -6,7 +6,8 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import Loading from "./Loading";
-
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { menuCardsAnimation } from "../../../../../theme/animations";
 const DEFAULT_IMG = "/coming-soon.png";
 
 export default function Menu() {
@@ -65,22 +66,29 @@ export default function Menu() {
   }
 
   return (
-    <MenuStyled>
+    <TransitionGroup component={MenuStyled}>
       {products.map((product) => (
-        <CardProduct
+        <CSSTransition
+          classNames={"menu-cards"}
+          timeout={300}
           key={product.id}
-          title={product.title}
-          img={product.imageSource ? product.imageSource : DEFAULT_IMG}
-          price={product.price}
-          hasDeleteButton={isModeAdmin}
-          onDelete={(e) => handleCardDelete(e, product.id)}
-          onClick={() => handleClick(product.id)}
-          isHoverable={isModeAdmin}
-          isSelected={checkIfProductIsClick(productSelected.id, product.id)}
-          onAdd={(e) => handleAddButton(e, product.id)}
-        />
+          appear={false}
+        >
+          <CardProduct
+            key={product.id}
+            title={product.title}
+            img={product.imageSource ? product.imageSource : DEFAULT_IMG}
+            price={product.price}
+            hasDeleteButton={isModeAdmin}
+            onDelete={(e) => handleCardDelete(e, product.id)}
+            onClick={() => handleClick(product.id)}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClick(productSelected.id, product.id)}
+            onAdd={(e) => handleAddButton(e, product.id)}
+          />
+        </CSSTransition>
       ))}
-    </MenuStyled>
+    </TransitionGroup>
   );
 }
 
@@ -92,4 +100,5 @@ const MenuStyled = styled.div`
   grid-row-gap: 60px;
   overflow-y: scroll;
   padding: 50px 50px 150px;
+  ${menuCardsAnimation}
 `;

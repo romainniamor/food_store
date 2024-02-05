@@ -49,7 +49,7 @@ export default function BasketProducts({ basket }) {
               classNames={"basketCards"}
               appear={true}
               key={menuProduct.id}
-              timeout={{ enter: 500, exit: 500 }}
+              timeout={{ enter: 300, exit: 300 }}
             >
               <BasketCard
                 title={menuProduct.title}
