@@ -1,18 +1,20 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
-export default function CasinoEffect({ className, count }) {
+export default function CasinoEffect({ className, count, sign }) {
   return (
     <TransitionGroup component={CasinoEffectStyled}>
       <CSSTransition timeout={300} classNames="count-animated" key={count}>
-        <span className={className}>{count}</span>
+        <span className={className}>
+          {sign} {count}
+        </span>
       </CSSTransition>
     </TransitionGroup>
   );
 }
 
 const CasinoEffectStyled = styled.div`
-  line-height: 1.3;
+  line-height: 1.2;
   overflow: hidden;
   position: relative;
 

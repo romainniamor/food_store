@@ -71,7 +71,7 @@ export default function BasketProducts({ basket }) {
   );
 }
 
-const BasketProductsStyled = styled.div`
+const BasketProductsStyled = styled.span`
   background: ${theme.colors.background_white};
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2) inset;
   height: calc(95vh - 140px - 100px);
