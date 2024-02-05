@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import CasinoEffect from "../../../../reusableUi/CasinoEffect";
 
 export default function Total({ amoutToPay }) {
   return (
     <TotalStyled>
       <span className="total-title">total</span>
-      <span className="total-amount">{amoutToPay}</span>
+      <CasinoEffect className="total-amount" count={amoutToPay} />
     </TotalStyled>
   );
 }

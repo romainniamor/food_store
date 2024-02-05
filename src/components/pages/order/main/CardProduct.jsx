@@ -4,6 +4,7 @@ import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
 import { TiDelete } from "react-icons/ti";
 import Button from "../../../reusableUi/Button";
+import { scaleUpElement } from "../../../../theme/animations";
 
 export default function CardProduct({
   title,
@@ -74,6 +75,7 @@ const CardStyled = styled.div`
 
     .delete-button {
       position: absolute;
+      display: flex;
       right: 15px;
       top: 15px;
       color: ${theme.colors.primary};
@@ -81,6 +83,7 @@ const CardStyled = styled.div`
       border: none;
       cursor: pointer;
       font-size: 30px;
+      animation: ${scaleUpElement} 0.3s ease-in-out;
       &:hover {
         color: ${theme.colors.red};
       }
