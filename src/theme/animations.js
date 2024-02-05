@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, keyframes } from "styled-components";
 
 export const adminAnimation = css`
   .admin-appear {
@@ -39,4 +39,14 @@ export const basketCardsAnimation = css`
     opacity: 0;
     transition: all 0.5s ease-in-out;
   }
+`;
+
+export const scaleUpElement = keyframes`
+from {
+    transform: scale(0);
+}
+
+to {
+    transform: scale(1);
+}
 `;
