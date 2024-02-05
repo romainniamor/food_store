@@ -5,6 +5,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../contexts/orderContext";
 import { findInArray } from "../../../../../utils/arrays";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { basketCardsAnimation } from "../../../../../theme/animations";
 
 export default function BasketProducts({ basket }) {
   const {
@@ -78,31 +79,5 @@ const BasketProductsStyled = styled.span`
   overflow-y: scroll;
   width: 100%;
 
-  .basketCards-appear {
-    transform: translateX(100px);
-    opacity: 0.7;
-  }
-
-  .basketCards-appear-active {
-    transform: translateX(0px);
-    opacity: 1;
-    transition: all 0.5s ease-in-out;
-  }
-
-  .basketCards-enter {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-
-  .basketCards-enter-active {
-    transform: translateX(0);
-    opacity: 1;
-    transition: all 0.5s ease-in-out;
-  }
-
-  .basketCards-exit {
-    transform: translateX(-100px);
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-  }
+  ${basketCardsAnimation}
 `;

@@ -6,6 +6,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../contexts/orderContext";
 import Basket from "./basket/Basket";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { adminAnimation } from "../../../../theme/animations";
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext);
@@ -31,17 +32,6 @@ export default function Main() {
     </MainStyled>
   );
 }
-
-const adminAnimation = css`
-  .admin-appear {
-    transform: translateY(100%);
-  }
-
-  .admin-appear-active {
-    transform: translateY(0%);
-    transition: transform 0.5s ease-in-out;
-  }
-`;
 
 const MainStyled = styled.main`
   ${(isModeAdmin) => isModeAdmin && adminAnimation};
