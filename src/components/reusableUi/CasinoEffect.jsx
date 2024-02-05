@@ -1,13 +1,11 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styled from "styled-components";
 
-export default function CasinoEffect({ className, count, sign }) {
+export default function CasinoEffect({ className, count }) {
   return (
     <TransitionGroup component={CasinoEffectStyled}>
       <CSSTransition timeout={300} classNames="count-animated" key={count}>
-        <span className={className}>
-          {sign} {count}
-        </span>
+        <span className={className}>{count}</span>
       </CSSTransition>
     </TransitionGroup>
   );
