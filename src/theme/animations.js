@@ -1,16 +1,5 @@
 import { css, keyframes } from "styled-components";
 
-export const adminAnimation = css`
-  .admin-appear {
-    transform: translateY(100%);
-  }
-
-  .admin-appear-active {
-    transform: translateY(0%);
-    transition: transform 0.3s ease-in-out;
-  }
-`;
-
 export const basketCardsAnimation = css`
   .basketCards-appear {
     transform: translateX(100px);
@@ -58,11 +47,20 @@ export const menuCardsAnimation = css`
 
   .menu-cards-enter-active {
     transform: translateX(0);
-    transition: transform 300ms;
+    transition: transform 300ms ease-in-out;
   }
 
   .menu-cards-exit-active {
     scale: 0;
-    transition: scale 300ms;
+    transition: scale 300ms ease-in-out;
+  }
+`;
+
+export const fadeFromBottom = keyframes`
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
   }
 `;
