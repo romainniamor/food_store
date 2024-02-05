@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import { styled, css } from "styled-components";
 import { theme } from "../../../../theme/index";
 import Menu from "./menu/Menu";
 import Admin from "./admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../contexts/orderContext";
 import Basket from "./basket/Basket";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext);
@@ -13,13 +14,37 @@ export default function Main() {
       <Basket />
       <div className="menu-and-admin">
         <Menu />
-        {isModeAdmin && <Admin />}
+
+        {isModeAdmin && (
+          <TransitionGroup>
+            <CSSTransition
+              classNames="admin"
+              timeout={500}
+              key={isModeAdmin}
+              appear={true}
+            >
+              <Admin />
+            </CSSTransition>
+          </TransitionGroup>
+        )}
       </div>
     </MainStyled>
   );
 }
 
+const adminAnimation = css`
+  .admin-appear {
+    transform: translateY(100%);
+  }
+
+  .admin-appear-active {
+    transform: translateY(0%);
+    transition: transform 0.5s ease-in-out;
+  }
+`;
+
 const MainStyled = styled.main`
+  ${(isModeAdmin) => isModeAdmin && adminAnimation};
   flex: 1;
   background: ${theme.colors.background_white};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
