@@ -5,7 +5,6 @@ import Admin from "./admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../contexts/orderContext";
 import Basket from "./basket/Basket";
-import { adminAnimation } from "../../../../theme/animations";
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext);
@@ -21,7 +20,6 @@ export default function Main() {
 }
 
 const MainStyled = styled.main`
-  ${(isModeAdmin) => isModeAdmin && adminAnimation};
   flex: 1;
   background: ${theme.colors.background_white};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
