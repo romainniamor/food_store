@@ -34,6 +34,14 @@ const AdminForm = React.forwardRef(
               ref={ref && inputText.name === "title" ? ref : null}
             />
           ))}
+          <select name="is-available" className="is-available" id="3">
+            <option value={true}>En stock</option>
+            <option value={false}>Indisponible</option>
+          </select>
+          <select name="is-publicised" className="is-publicised" id="4">
+            <option value={true}>Sans pub</option>
+            <option value={false}>Avec pub</option>
+          </select>
         </div>
         <div className="submit">{children}</div>
       </AdminFormStyled>
@@ -62,7 +70,7 @@ const AdminFormStyled = styled.form`
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 9px;
-    grid-column-gap: 5px;
+    grid-column-gap: 9px;
 
     .title {
       grid-area: 1 / 1 / -3 / 4;
@@ -72,6 +80,14 @@ const AdminFormStyled = styled.form`
     }
     .price {
       grid-area: 3 / 1 / 4 / 2;
+    }
+
+    .is-available {
+      grid-area: 3 / 2 / 4 / 3;
+    }
+
+    .is-publicised {
+      grid-area: 3 / 3 / 4 / 4;
     }
   }
 
