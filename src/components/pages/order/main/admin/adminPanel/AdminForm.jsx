@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
+import styled from "styled-components/";
 import { theme } from "../../../../../../theme";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusableUi/TextInput";
@@ -53,10 +53,26 @@ const AdminFormStyled = styled.form`
   height: 100%;
 
   .input-fields {
-    background-color: ${theme.colors.white};
+    width: 100%;
+    height: 100%;
+
     grid-area: 1 / 2 / 4 / 3;
+
     display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 9px;
+    grid-column-gap: 5px;
+
+    .title {
+      grid-area: 1 / 1 / -3 / 4;
+    }
+    .image-source {
+      grid-area: 2 / 1 / 3 / 4;
+    }
+    .price {
+      grid-area: 3 / 1 / 4 / 2;
+    }
   }
 
   .submit {

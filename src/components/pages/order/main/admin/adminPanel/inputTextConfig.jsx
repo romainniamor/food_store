@@ -10,6 +10,7 @@ export const getInputTextConfig = (newProduct) => [
     Icon: <FaHamburger />,
     value: newProduct.title,
     type: "text",
+    className: "title",
   },
   {
     id: "1",
@@ -18,6 +19,7 @@ export const getInputTextConfig = (newProduct) => [
     Icon: <BsFillCameraFill />,
     value: newProduct.imageSource,
     type: "text",
+    className: "image-source",
   },
   {
     id: "2",
@@ -26,5 +28,6 @@ export const getInputTextConfig = (newProduct) => [
     Icon: <MdOutlineEuro />,
     value: newProduct.price,
     type: "text",
+    className: "price",
   },
 ];
