@@ -8,7 +8,6 @@ const initialiseProducts = async (userName, setProducts) => {
 
 const initialiseBasket = (userName, setBasket) => {
   const dataBasket = getLocalStorage(userName);
-  console.log("basket", dataBasket);
   if (!dataBasket) return;
   setBasket(dataBasket);
 };

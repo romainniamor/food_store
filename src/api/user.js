@@ -11,19 +11,21 @@ const getUser = async (userId) => {
   }
 };
 
-const createUser = (userId) => {
+const createUser = async (userId) => {
   const docRef = doc(db, "users", userId); //chemin
-  const data = {
+  const newUserCreated = {
     username: userId,
     menu: menu.LARGE, //des données
   };
-  setDoc(docRef, data);
+  await setDoc(docRef, newUserCreated);
+
+  return newUserCreated;
 };
 
 export const authenticateUser = async (userId) => {
   const existingUser = await getUser(userId);
   if (!existingUser) {
-    createUser(userId);
+    return await createUser(userId);
   }
   return existingUser;
 };
