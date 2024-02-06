@@ -6,6 +6,7 @@ import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusableUi/TextInput";
 import { getInputTextConfig } from "./inputTextConfig";
 import React from "react";
+import SelectInput from "../../../../../reusableUi/SelectInput";
 
 const AdminForm = React.forwardRef(
   (
@@ -17,6 +18,16 @@ const AdminForm = React.forwardRef(
     //comportements
 
     const inputTexts = getInputTextConfig(product);
+
+    const isAvailableOptions = [
+      { value: true, label: "En stock" },
+      { value: false, label: "Indisponible" },
+    ];
+
+    const isPublicisedOptions = [
+      { value: true, label: "Sans pub" },
+      { value: false, label: "Avec pub" },
+    ];
 
     //render
     return (
@@ -34,14 +45,18 @@ const AdminForm = React.forwardRef(
               ref={ref && inputText.name === "title" ? ref : null}
             />
           ))}
-          <select name="is-available" className="is-available" id="3">
-            <option value={true}>En stock</option>
-            <option value={false}>Indisponible</option>
-          </select>
-          <select name="is-publicised" className="is-publicised" id="4">
-            <option value={true}>Sans pub</option>
-            <option value={false}>Avec pub</option>
-          </select>
+          <SelectInput
+            options={isAvailableOptions}
+            clasName="is-avalailable"
+            name="is-available"
+            id="3"
+          />
+          <SelectInput
+            options={isPublicisedOptions}
+            clasName="is-publicised"
+            name="is-publicised"
+            id="4"
+          />
         </div>
         <div className="submit">{children}</div>
       </AdminFormStyled>
