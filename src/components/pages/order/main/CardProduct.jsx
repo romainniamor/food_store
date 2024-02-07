@@ -16,7 +16,7 @@ export default function CardProduct({
   isHoverable,
   isSelected,
   onAdd,
-  isOverlayImageVisible = true,
+  isOverlayVisible,
   overlayImg,
 }) {
   return (
@@ -38,7 +38,7 @@ export default function CardProduct({
           )}
 
           <div className="image">
-            {isOverlayImageVisible && (
+            {isOverlayVisible && (
               <div className="overlays">
                 <div className="transparent-layer"></div>
                 <img
