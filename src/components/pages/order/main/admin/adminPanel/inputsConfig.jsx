@@ -34,13 +34,14 @@ export const getInputTextConfig = (newProduct) => [
   },
 ];
 
-export const getInputSelectConfig = () => [
+export const getInputSelectConfig = (newProduct) => [
   {
     id: "3",
     name: "isAvailable",
+    value: newProduct.isAvailable,
     Icon: <FiPackage />,
     options: [
-      { value: true, label: "Disponible" },
+      { value: true, label: "En stock" },
       { value: false, label: "Indisponible" },
     ],
     className: "is-available",
@@ -48,6 +49,7 @@ export const getInputSelectConfig = () => [
   {
     id: "4",
     name: "isPublicised",
+    value: newProduct.isAdvertised,
     Icon: <GoMegaphone />,
     options: [
       { value: true, label: "Sans pub" },

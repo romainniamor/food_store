@@ -4,7 +4,7 @@ import styled from "styled-components/";
 import { theme } from "../../../../../../theme";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusableUi/TextInput";
-import { getInputTextConfig } from "./inputTextConfig";
+import { getInputTextConfig, getInputSelectConfig } from "./inputsConfig";
 import React from "react";
 import SelectInput from "../../../../../reusableUi/SelectInput";
 
@@ -13,23 +13,10 @@ const AdminForm = React.forwardRef(
     { onSubmit, onChange, product, version, children, onFocus, onBlur },
     ref
   ) => {
-    //state
-
-    //comportements
-
     const inputTexts = getInputTextConfig(product);
+    const inputSelects = getInputSelectConfig(product);
+    console.log("AdminForm -> inputTexts", inputTexts, inputSelects);
 
-    const isAvailableOptions = [
-      { value: true, label: "En stock" },
-      { value: false, label: "Indisponible" },
-    ];
-
-    const isPublicisedOptions = [
-      { value: true, label: "Sans pub" },
-      { value: false, label: "Avec pub" },
-    ];
-
-    //render
     return (
       <AdminFormStyled onSubmit={onSubmit}>
         <ImagePreview title={product.title} imageSource={product.imageSource} />
@@ -45,18 +32,17 @@ const AdminForm = React.forwardRef(
               ref={ref && inputText.name === "title" ? ref : null}
             />
           ))}
-          <SelectInput
-            options={isAvailableOptions}
-            clasName="is-avalailable"
-            name="is-available"
-            id="3"
-          />
-          <SelectInput
-            options={isPublicisedOptions}
-            clasName="is-publicised"
-            name="is-publicised"
-            id="4"
-          />
+
+          {inputSelects.map((inputSelect) => (
+            <SelectInput
+              key={inputSelect.id}
+              options={inputSelect.options}
+              value={inputSelect.value}
+              clasName={inputSelect.className}
+              name={inputSelect.name}
+              id={inputSelect.id}
+            />
+          ))}
         </div>
         <div className="submit">{children}</div>
       </AdminFormStyled>
