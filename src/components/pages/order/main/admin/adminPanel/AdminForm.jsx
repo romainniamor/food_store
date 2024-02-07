@@ -15,7 +15,6 @@ const AdminForm = React.forwardRef(
   ) => {
     const inputTexts = getInputTextConfig(product);
     const inputSelects = getInputSelectConfig(product);
-    console.log("AdminForm -> inputTexts", inputTexts, inputSelects);
 
     return (
       <AdminFormStyled onSubmit={onSubmit}>
@@ -41,6 +40,9 @@ const AdminForm = React.forwardRef(
               clasName={inputSelect.className}
               name={inputSelect.name}
               id={inputSelect.id}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
             />
           ))}
         </div>

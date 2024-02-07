@@ -52,8 +52,8 @@ export const getInputSelectConfig = (newProduct) => [
     value: newProduct.isAdvertised,
     Icon: <GoMegaphone />,
     options: [
-      { value: true, label: "Sans pub" },
-      { value: false, label: "Avec pub" },
+      { value: false, label: "Sans pub" },
+      { value: true, label: "Avec pub" },
     ],
     className: "is-publicised",
   },
