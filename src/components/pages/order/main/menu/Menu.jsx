@@ -8,7 +8,7 @@ import { EMPTY_PRODUCT } from "../../../../../enums/product";
 import Loading from "./Loading";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { menuCardsAnimation } from "../../../../../theme/animations";
-const DEFAULT_IMG = "/coming-soon.png";
+import { DEFAULT_IMG, DEFAULT_OVERLAY_IMG } from "../../../../../enums/product";
 
 export default function Menu() {
   const {
@@ -85,6 +85,8 @@ export default function Menu() {
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClick(productSelected.id, product.id)}
             onAdd={(e) => handleAddButton(e, product.id)}
+            isOverlapImageVisible
+            overlayImg={DEFAULT_OVERLAY_IMG}
           />
         </CSSTransition>
       ))}
