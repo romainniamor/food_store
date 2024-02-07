@@ -96,6 +96,7 @@ export default function Menu() {
                   convertStringToBoolean(product.isAvailable) === false
                 }
                 overlayImg={DEFAULT_OVERLAY_IMG}
+                disabled={convertStringToBoolean(product.isAvailable) === false}
               />
             </CSSTransition>
           )

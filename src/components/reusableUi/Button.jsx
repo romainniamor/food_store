@@ -1,9 +1,20 @@
 import { styled, css } from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function Button({ Icon, content, version = "normal", onClick }) {
+export default function Button({
+  Icon,
+  content,
+  version = "normal",
+  onClick,
+  disabled,
+}) {
   return (
-    <ButtonStyled type="submit" version={version} onClick={onClick}>
+    <ButtonStyled
+      type="submit"
+      version={version}
+      onClick={onClick}
+      disabled={disabled}
+    >
       <span>{content}</span>
       {Icon && Icon}
     </ButtonStyled>
@@ -21,6 +32,11 @@ const ButtonStyled = styled.button`
   font-weight: ${theme.weights.bold};
   border-radius: ${theme.borderRadius.round};
   ${(props) => extraStyle[props.version]};
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 `;
 
 const extraStylePrimary = css`

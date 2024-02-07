@@ -18,6 +18,7 @@ export default function CardProduct({
   onAdd,
   isOverlayVisible,
   overlayImg,
+  disabled,
 }) {
   return (
     <StyleSheetManager
@@ -56,6 +57,7 @@ export default function CardProduct({
               <p className="price">{formatPrice(price)}</p>
               <div className="button-box">
                 <Button
+                  disabled={disabled}
                   className="primary-button"
                   content={"ajouter"}
                   version={"primaryOutlined"}
