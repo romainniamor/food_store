@@ -1,8 +1,8 @@
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import { FiPackage } from "react-icons/fi";
-import { GoMegaphone } from "react-icons/go";
+import { LuPackage } from "react-icons/lu";
+import { BiSolidMegaphone } from "react-icons/bi";
 
 export const getInputTextConfig = (newProduct) => [
   {
@@ -39,7 +39,7 @@ export const getInputSelectConfig = (newProduct) => [
     id: "3",
     name: "isAvailable",
     value: newProduct.isAvailable,
-    Icon: <FiPackage />,
+    Icon: <LuPackage />,
     options: [
       { value: true, label: "En stock" },
       { value: false, label: "Indisponible" },
@@ -50,7 +50,7 @@ export const getInputSelectConfig = (newProduct) => [
     id: "4",
     name: "isPublicised",
     value: newProduct.isAdvertised,
-    Icon: <GoMegaphone />,
+    Icon: <BiSolidMegaphone />,
     options: [
       { value: false, label: "Sans pub" },
       { value: true, label: "Avec pub" },
