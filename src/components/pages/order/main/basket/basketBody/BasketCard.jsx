@@ -1,4 +1,3 @@
-import React from "react";
 import { styled, css, StyleSheetManager } from "styled-components";
 import { theme } from "../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
@@ -76,7 +75,6 @@ const BasketCardStyled = styled.div`
 
   .image {
     height: 70px;
-    border: 3px solid blue;
 
     img {
       padding: 5px;

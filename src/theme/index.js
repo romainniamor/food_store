@@ -30,6 +30,7 @@ const spacing = {
 };
 
 const fonts = {
+  xxxs: "6px",
   xxs: "8px",
   xs: "10px",
   s: "12px",

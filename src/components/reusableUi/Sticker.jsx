@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function Sticker({ label = "new", className }) {
+export default function Sticker({ label, className }) {
   return <StickerStyled className={className}>{label}</StickerStyled>;
 }
 
 const StickerStyled = styled.span`
-  font-size: ${theme.fonts.size.XXXS};
-  padding: 1em;
+  font-size: ${theme.fonts.xxxs};
+  padding: 1rem;
   width: 15px;
   height: 15px;
   display: flex;

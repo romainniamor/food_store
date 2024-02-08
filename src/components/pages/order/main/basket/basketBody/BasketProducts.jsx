@@ -9,6 +9,7 @@ import { basketCardsAnimation } from "../../../../../../theme/animations";
 import { convertStringToBoolean } from "../../../../../../utils/string";
 import { formatPrice } from "../../../../../../utils/math";
 import { BASKET_MESSAGE } from "../../../../../../enums/product";
+import Sticker from "../../../../../reusableUi/Sticker";
 
 export default function BasketProducts({ basket }) {
   const {
@@ -54,30 +55,36 @@ export default function BasketProducts({ basket }) {
               key={menuProduct.id}
               timeout={{ enter: 300, exit: 300 }}
             >
-              <BasketCard
-                title={menuProduct.title}
-                imageSource={menuProduct.imageSource}
-                quantity={
-                  convertStringToBoolean(menuProduct.isAvailable)
-                    ? basketProduct.quantity
-                    : ""
-                }
-                price={
-                  convertStringToBoolean(menuProduct.isAvailable)
-                    ? formatPrice(menuProduct.price)
-                    : BASKET_MESSAGE.NOT_AVAILABLE
-                }
-                onDelete={(e) => handleDeleteButton(menuProduct.id, e)}
-                isClickable={isModeAdmin}
-                isSelected={checkIfProductIsClick(
-                  basketProduct.id,
-                  productSelected.id
+              <div className="card-container">
+                {" "}
+                {convertStringToBoolean(menuProduct.isAdvertised) && (
+                  <Sticker label={"new"} className={"sticker"} />
                 )}
-                onClick={() => handleClick(menuProduct.id)}
-                isAvailable={
-                  convertStringToBoolean(menuProduct.isAvailable) === true
-                }
-              />
+                <BasketCard
+                  title={menuProduct.title}
+                  imageSource={menuProduct.imageSource}
+                  quantity={
+                    convertStringToBoolean(menuProduct.isAvailable)
+                      ? basketProduct.quantity
+                      : ""
+                  }
+                  price={
+                    convertStringToBoolean(menuProduct.isAvailable)
+                      ? formatPrice(menuProduct.price)
+                      : BASKET_MESSAGE.NOT_AVAILABLE
+                  }
+                  onDelete={(e) => handleDeleteButton(menuProduct.id, e)}
+                  isClickable={isModeAdmin}
+                  isSelected={checkIfProductIsClick(
+                    basketProduct.id,
+                    productSelected.id
+                  )}
+                  onClick={() => handleClick(menuProduct.id)}
+                  isAvailable={
+                    convertStringToBoolean(menuProduct.isAvailable) === true
+                  }
+                />
+              </div>
             </CSSTransition>
           );
         })}
@@ -92,6 +99,17 @@ const BasketProductsStyled = styled.span`
   height: calc(95vh - 140px - 100px);
   overflow-y: scroll;
   width: 100%;
+
+  .card-container {
+    position: relative;
+
+    .sticker {
+      position: absolute;
+      z-index: 2;
+      bottom: 10%;
+      left: 25%;
+    }
+  }
 
   ${basketCardsAnimation}
 `;
