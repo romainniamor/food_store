@@ -90,7 +90,7 @@ const AdminFormStyled = styled.form`
       grid-area: 3 / 2 / 4 / 3;
     }
 
-    .is-publicised {
+    .is-advertised {
       grid-area: 3 / 3 / 4 / 4;
     }
   }

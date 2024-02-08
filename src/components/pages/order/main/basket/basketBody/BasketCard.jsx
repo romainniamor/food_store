@@ -76,6 +76,7 @@ const BasketCardStyled = styled.div`
 
   .image {
     height: 70px;
+    border: 3px solid blue;
 
     img {
       padding: 5px;

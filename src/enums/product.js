@@ -12,6 +12,6 @@ export const BASKET_MESSAGE = {
   NOT_AVAILABLE: "Non Disponible",
 };
 
-export const DEFAULT_IMG = "/coming-soon.jpg";
+export const DEFAULT_IMG = "/coming-soon.png";
 
 export const DEFAULT_OVERLAY_IMG = "/stock-epuise.png";

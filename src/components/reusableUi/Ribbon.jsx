@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function Ribbon({ label = "new", className }) {
+export default function Ribbon({ label, className }) {
   return (
     <RibbonStyled className={className}>
       <div className="ribbon ribbon-top-left">
@@ -12,24 +12,9 @@ export default function Ribbon({ label = "new", className }) {
 }
 
 const RibbonStyled = styled.div`
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #f0f0f0;
-  }
-  .box {
-    position: relative;
-    max-width: 600px;
-    width: 90%;
-    height: 400px;
-    background: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
-
   /* common */
   .ribbon {
+    z-index: 3;
     width: 150px;
     height: 150px;
     overflow: hidden;

@@ -76,6 +76,7 @@ export default function CardProduct({
 
 const CardStyled = styled.div`
   ${({ isHoverable }) => isHoverable && hoverableStyle}
+  height: 330px;
 
   .card {
     overflow: hidden;
@@ -197,8 +198,7 @@ const CardStyled = styled.div`
 const hoverableStyle = css`
   .card:hover:not(:disabled) {
     cursor: pointer;
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+
     box-shadow: ${theme.shadows.orangeHighLight};
   }
 `;

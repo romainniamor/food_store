@@ -48,13 +48,13 @@ export const getInputSelectConfig = (newProduct) => [
   },
   {
     id: "4",
-    name: "isPublicised",
+    name: "isAdvertised",
     value: newProduct.isAdvertised,
     Icon: <BiSolidMegaphone />,
     options: [
       { value: false, label: "Sans pub" },
       { value: true, label: "Avec pub" },
     ],
-    className: "is-publicised",
+    className: "is-advertised",
   },
 ];
