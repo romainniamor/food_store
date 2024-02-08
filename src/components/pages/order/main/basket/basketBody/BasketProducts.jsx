@@ -6,6 +6,9 @@ import OrderContext from "../../../../../../contexts/orderContext";
 import { findInArray } from "../../../../../../utils/arrays";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketCardsAnimation } from "../../../../../../theme/animations";
+import { convertStringToBoolean } from "../../../../../../utils/string";
+import { formatPrice } from "../../../../../../utils/math";
+import { BASKET_MESSAGE } from "../../../../../../enums/product";
 
 export default function BasketProducts({ basket }) {
   const {
@@ -54,8 +57,16 @@ export default function BasketProducts({ basket }) {
               <BasketCard
                 title={menuProduct.title}
                 imageSource={menuProduct.imageSource}
-                quantity={basketProduct.quantity}
-                price={menuProduct.price}
+                quantity={
+                  convertStringToBoolean(menuProduct.isAvailable)
+                    ? basketProduct.quantity
+                    : ""
+                }
+                price={
+                  convertStringToBoolean(menuProduct.isAvailable)
+                    ? formatPrice(menuProduct.price)
+                    : BASKET_MESSAGE.NOT_AVAILABLE
+                }
                 onDelete={(e) => handleDeleteButton(menuProduct.id, e)}
                 isClickable={isModeAdmin}
                 isSelected={checkIfProductIsClick(
@@ -63,6 +74,9 @@ export default function BasketProducts({ basket }) {
                   productSelected.id
                 )}
                 onClick={() => handleClick(menuProduct.id)}
+                isAvailable={
+                  convertStringToBoolean(menuProduct.isAvailable) === true
+                }
               />
             </CSSTransition>
           );

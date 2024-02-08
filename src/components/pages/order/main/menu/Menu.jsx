@@ -68,40 +68,32 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled}>
-      {products.map(
-        (product) => (
-          console.log(product.isAvailable),
-          (
-            <CSSTransition
-              classNames={"menu-cards"}
-              timeout={300}
-              key={product.id}
-              appear={false}
-            >
-              <CardProduct
-                key={product.id}
-                title={product.title}
-                img={product.imageSource ? product.imageSource : DEFAULT_IMG}
-                price={product.price}
-                hasDeleteButton={isModeAdmin}
-                onDelete={(e) => handleCardDelete(e, product.id)}
-                onClick={() => handleClick(product.id)}
-                isHoverable={isModeAdmin}
-                isSelected={checkIfProductIsClick(
-                  productSelected.id,
-                  product.id
-                )}
-                onAdd={(e) => handleAddButton(e, product.id)}
-                isOverlayVisible={
-                  convertStringToBoolean(product.isAvailable) === false
-                }
-                overlayImg={DEFAULT_OVERLAY_IMG}
-                disabled={convertStringToBoolean(product.isAvailable) === false}
-              />
-            </CSSTransition>
-          )
-        )
-      )}
+      {products.map((product) => (
+        <CSSTransition
+          classNames={"menu-cards"}
+          timeout={300}
+          key={product.id}
+          appear={false}
+        >
+          <CardProduct
+            key={product.id}
+            title={product.title}
+            img={product.imageSource ? product.imageSource : DEFAULT_IMG}
+            price={product.price}
+            hasDeleteButton={isModeAdmin}
+            onDelete={(e) => handleCardDelete(e, product.id)}
+            onClick={() => handleClick(product.id)}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClick(productSelected.id, product.id)}
+            onAdd={(e) => handleAddButton(e, product.id)}
+            isOverlayVisible={
+              convertStringToBoolean(product.isAvailable) === false
+            }
+            overlayImg={DEFAULT_OVERLAY_IMG}
+            disabled={convertStringToBoolean(product.isAvailable) === false}
+          />
+        </CSSTransition>
+      ))}
     </TransitionGroup>
   );
 }
