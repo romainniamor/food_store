@@ -48,6 +48,7 @@ export default function BasketProducts({ basket }) {
       <TransitionGroup>
         {basket.map((basketProduct) => {
           const menuProduct = findInArray(products, basketProduct.id);
+
           return (
             <CSSTransition
               classNames={"basketCards"}

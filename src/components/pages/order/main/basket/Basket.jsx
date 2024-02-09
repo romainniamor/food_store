@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import Banner from "./Banner";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/math";
-
 import BasketBody from "./basketBody/BasketBody";
 import { useContext } from "react";
 import orderContext from "../../../../../contexts/orderContext";
@@ -20,8 +19,8 @@ export default function Basket() {
     return basket.reduce((total, product) => {
       //using products array to find data about product price
       const productInMenu = findInArray(products, product.id);
+
       if (productInMenu.isAvailable === "false") return total;
-      //@todo => check formatPrice in utils in order to avoid manage error case here
       if (isNaN(productInMenu.price)) return total;
       total += productInMenu.price * product.quantity;
       return total;

@@ -3,8 +3,6 @@
 export const EMPTY_PRODUCT = Object.freeze({
   title: "",
   imageSource: "",
-  isAvailable: true,
-  isAdvertised: false,
   price: "",
 });
 
