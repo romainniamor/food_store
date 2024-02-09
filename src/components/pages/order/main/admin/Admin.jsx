@@ -7,7 +7,7 @@ import OrderContext from "../../../../../contexts/orderContext";
 import { fadeFromBottom } from "../../../../../theme/animations";
 
 export default function Admin() {
-  const { isCollapsed, setIsCollapsed } = useContext(OrderContext);
+  const { isCollapsed } = useContext(OrderContext);
 
   return (
     <AdminStyled>

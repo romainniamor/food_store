@@ -22,8 +22,9 @@ export default function Basket() {
       const productInMenu = findInArray(products, product.id);
       if (productInMenu.isAvailable === "false") return total;
       //@todo => check formatPrice in utils in order to avoid manage error case here
-      // if (isNaN(product.price)) return total;
-      return total + product.quantity * productInMenu.price;
+      if (isNaN(productInMenu.price)) return total;
+      total += productInMenu.price * product.quantity;
+      return total;
     }, 0);
   };
 

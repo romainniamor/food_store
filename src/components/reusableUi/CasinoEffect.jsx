@@ -18,30 +18,26 @@ const CasinoEffectStyled = styled.div`
 
   span {
     display: inline-block;
+    text-align: left;
   }
 
   .count-animated-enter {
     transform: translateY(100%);
-    opacity: 0;
   }
 
   .count-animated-enter-active {
     transform: translateY(0%);
-    opacity: 1;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
 
   .count-animated-exit {
-    opacity: 1;
     transform: translateY(0%);
     position: absolute;
     right: 0;
-    left: 0;
     bottom: 0;
   }
 
   .count-animated-exit-active {
-    opacity: 0;
     transform: translateY(-100%);
     transition: all 0.3s ease-in-out;
   }
