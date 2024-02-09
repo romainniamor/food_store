@@ -107,7 +107,7 @@ const BasketProductsStyled = styled.span`
       position: absolute;
       z-index: 2;
       bottom: 10%;
-      left: 25%;
+      left: 20%;
     }
   }
 

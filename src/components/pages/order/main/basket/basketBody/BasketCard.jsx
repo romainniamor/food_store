@@ -45,7 +45,7 @@ export default function BasketCard({
               </div>
 
               <div className="price">
-                <CasinoEffect count={price} />
+                <CasinoEffect className="card-price" count={price} />
               </div>
             </div>
             <div className="quantity">
@@ -115,6 +115,10 @@ const BasketCardStyled = styled.div`
       .price {
         font-size: ${theme.fonts.sm};
         font-weight: ${theme.weights.light};
+
+        .card-price {
+          left: 0;
+        }
       }
     }
 

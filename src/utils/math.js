@@ -1,8 +1,15 @@
+const replaceFrenchCommaWithDot = (price) => {
+  if (typeof price === "string") {
+    return price.replace(",", ".");
+  }
+  return price;
+};
+
 export function formatPrice(priceToFormat) {
   let price = priceToFormat;
 
-  if (!price || isNaN(price)) return "0,00 €";
-  price = replaceFrenchCommaWithDot(price);
+  if (!price) return "0,00 €";
+  price = replaceFrenchCommaWithDot(priceToFormat);
 
   const formattedPrice = new Intl.NumberFormat("fr-FR", {
     style: "currency",
@@ -10,9 +17,4 @@ export function formatPrice(priceToFormat) {
     minimumFractionDigits: 2,
   }).format(price);
   return formattedPrice;
-}
-
-export function replaceFrenchCommaWithDot(price) {
-  if (typeof price === "string") price = parseFloat(price.replace(",", "."));
-  return price;
 }

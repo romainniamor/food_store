@@ -27,17 +27,17 @@ export default function AddForm() {
     displaySuccessMessage();
   };
 
-  const priceInputValid = (inputValue) => {
-    const isValid = /^[0-9.]+$/.test(inputValue);
-    return isValid;
-  };
+  // const priceInputValid = (inputValue) => {
+  //   const isValid = /^[0-9.]+$/.test(inputValue);
+  //   return isValid;
+  // };
 
   const handleChange = (e) => {
     const newValue = e.target.value;
     const name = e.target.name;
-    if (name === "price" && !priceInputValid(newValue)) {
-      return;
-    }
+    // if (name === "price" && !priceInputValid(newValue)) {
+    //   return;
+    // }
 
     setNewProduct({ ...newProduct, [name]: newValue }); //dynamic property name
   };
