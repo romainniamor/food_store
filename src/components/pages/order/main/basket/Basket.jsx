@@ -20,6 +20,7 @@ export default function Basket() {
     return basket.reduce((total, product) => {
       //using products array to find data about product price
       const productInMenu = findInArray(products, product.id);
+      if (productInMenu.isAvailable === "false") return total;
       //@todo => check formatPrice in utils in order to avoid manage error case here
       // if (isNaN(product.price)) return total;
       return total + product.quantity * productInMenu.price;

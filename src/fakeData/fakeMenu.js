@@ -77,7 +77,7 @@ const LARGE = [
     price: 5.598,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
   {
     id: "2",
@@ -85,8 +85,8 @@ const LARGE = [
     title: "Vegan Burger",
     price: 5.4985,
     quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
+    isAvailable: false,
+    isAdvertised: true,
   },
   {
     id: "3",
@@ -104,7 +104,7 @@ const LARGE = [
     price: 3.568,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
   {
     id: "5",

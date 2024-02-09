@@ -5,9 +5,9 @@ import React from "react";
 
 //utilisation du spread operator pour récupérer les props supplémentaires scalables
 const TextInput = React.forwardRef(
-  ({ value, onChange, Icon, version, ...extraProps }, ref) => {
+  ({ value, onChange, Icon, className, version, ...extraProps }, ref) => {
     return (
-      <TextInputStyled version={version}>
+      <TextInputStyled version={version} className={className}>
         <div className="icon">{Icon && Icon}</div>
         <input
           ref={ref}
@@ -24,7 +24,6 @@ const TextInput = React.forwardRef(
 export default TextInput;
 
 const TextInputStyled = styled.div`
-  width: 100%;
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
@@ -35,7 +34,7 @@ const TextInputStyled = styled.div`
   input {
     border: none;
     padding: 2px;
-    flex: 1;
+    width: 100%;
     background: transparent;
     color: ${theme.colors.dark};
     &::placeholder {
@@ -50,7 +49,7 @@ const TextInputStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${theme.colors.greyMedium};
+    color: ${theme.colors.greyBlue};
     font-size: ${theme.fonts.sm};
   }
 
@@ -72,6 +71,7 @@ const extraNormalStyle = css`
   //used for loginForm
   background: ${theme.colors.white};
   gap: ${theme.spacing.s};
+  width: 100%;
 `;
 
 const extraMinimalistStyle = css`

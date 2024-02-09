@@ -4,7 +4,7 @@ import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
 import { TiDelete } from "react-icons/ti";
 import Button from "../../../reusableUi/Button";
-import { scaleUpElement } from "../../../../theme/animations";
+import { fadeFromTop, scaleUpElement } from "../../../../theme/animations";
 
 export default function CardProduct({
   title,
@@ -16,6 +16,9 @@ export default function CardProduct({
   isHoverable,
   isSelected,
   onAdd,
+  isOverlayVisible,
+  overlayImg,
+  disabled,
 }) {
   return (
     <StyleSheetManager
@@ -34,7 +37,18 @@ export default function CardProduct({
               <TiDelete />
             </button>
           )}
+
           <div className="image">
+            {isOverlayVisible && (
+              <div className="overlays">
+                <div className="transparent-layer"></div>
+                <img
+                  className="image-overlay"
+                  src={overlayImg}
+                  alt={overlayImg}
+                ></img>
+              </div>
+            )}
             <img src={img} alt="product-picture" />
           </div>
           <div className="info-text">
@@ -43,6 +57,7 @@ export default function CardProduct({
               <p className="price">{formatPrice(price)}</p>
               <div className="button-box">
                 <Button
+                  disabled={disabled}
                   className="primary-button"
                   content={"ajouter"}
                   version={"primaryOutlined"}
@@ -61,7 +76,10 @@ export default function CardProduct({
 
 const CardStyled = styled.div`
   ${({ isHoverable }) => isHoverable && hoverableStyle}
+  height: 330px;
+
   .card {
+    overflow: hidden;
     position: relative;
     background: ${theme.colors.white};
     width: 240px;
@@ -73,7 +91,35 @@ const CardStyled = styled.div`
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     border-radius: ${theme.borderRadius.extraRound};
 
+    .overlays {
+      position: absolute;
+      overflow: hidden;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+
+      .transparent-layer {
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+        background-color: snow;
+      }
+      .image-overlay {
+        position: absolute;
+        object-fit: contain;
+        z-index: 3;
+        width: 80%;
+        animation: ${fadeFromTop} 0.3s ease-in-out;
+      }
+    }
+
     .delete-button {
+      z-index: 3;
       position: absolute;
       display: flex;
       right: 15px;
@@ -152,13 +198,13 @@ const CardStyled = styled.div`
 const hoverableStyle = css`
   .card:hover:not(:disabled) {
     cursor: pointer;
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+
     box-shadow: ${theme.shadows.orangeHighLight};
   }
 `;
 const selectedStyle = css`
   background: ${theme.colors.primary};
+  position: relative;
 
   .delete-button {
     color: ${theme.colors.white};

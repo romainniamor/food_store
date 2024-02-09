@@ -1,8 +1,7 @@
-import React from "react";
 import { styled, css, StyleSheetManager } from "styled-components";
 import { theme } from "../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
-import { formatPrice } from "../../../../../../utils/math";
+
 import CasinoEffect from "../../../../../reusableUi/casinoEffect";
 
 export default function BasketCard({
@@ -15,6 +14,7 @@ export default function BasketCard({
   isClickable,
   isSelected,
   onClick,
+  isAvailable,
 }) {
   return (
     <StyleSheetManager
@@ -43,10 +43,13 @@ export default function BasketCard({
               <div className="title">
                 <span>{title}</span>
               </div>
-              <span className="price">{formatPrice(price)}</span>
+
+              <div className="price">
+                <CasinoEffect count={price} />
+              </div>
             </div>
             <div className="quantity">
-              <CasinoEffect count={`x ${quantity}`} />
+              <CasinoEffect count={isAvailable ? `x ${quantity}` : ""} />
             </div>
           </div>
         </div>
